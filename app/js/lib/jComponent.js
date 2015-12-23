@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2015/12/22.
  */
-$(function(){
+;(function(){
 
     $.fn.jComponent = function( options ) {
 
@@ -103,24 +103,117 @@ $(function(){
 
         });
     }
+})();
+
+;(function($, window, document, undefined ){
+    $.fn.jComponentSelect = function( options ) {
 
 
-    $(".sex").jComponent({
-        inputName: "name",
-        iconSize: [16,16],
-        position: [0,0],
-        addInputClass: "radioOrange"
-    });
-    $(".checkbox").jComponent({
-        inputName: "name",
-        iconSize: [16,16],
-        position: [0,-48],
-        addInputClass: "checkboxBlue"
-    });
-    $(".checkbox14").jComponent({
-        inputName: "name",
-        iconSize: [20,20],
-        position: [0,-64],
-        addInputClass: "checkboxOrange"
-    });
-});
+        var selectHTML = "";
+        selectHTML += "<div class=\"jComponentSelect\">";
+        selectHTML += "   <div class=\"jComponentSelectTitleBox\">";
+        selectHTML += "     <div class=\"jComponentSelectTitle\" ></div>";
+        selectHTML += "       <div class=\"jComponentSelectIcon\"></div>";
+        selectHTML += "   </div>";
+        selectHTML += "   <ul class=\"jComponentSelectList\"></ul>";
+        selectHTML += "</div>";
+
+
+        var defaults = {
+        };
+
+        var settings = $.extend({},defaults, options);
+
+        function render () {
+
+        }
+
+        function eventDom() {
+
+        }
+
+        return this.each(function(i, _that ){
+
+
+            var that = $(_that);
+
+            var optionHTML = that.find("option").map(function(i, data ) {
+                var optionHTML = "<li class=\"option\" value=\"{optionValue}\">{optionName}</li>";
+                var optionValue = $(data).val();
+                var optionName = $(data).text();
+                return optionHTML.replace("{optionValue}",optionValue).replace("{optionName}",optionName);
+            }).toArray().join().replace(/\,/g,"");
+
+            // console.log(optionHTML);
+
+            that.before(selectHTML);
+
+            var customeSelect = that.prev();
+
+            // HTML select 添加到自定的select dev中
+            customeSelect.append(that.hide()).find(".jComponentSelectList").html(optionHTML);
+
+            var jComponentSelectTitleBox = customeSelect.find(".jComponentSelectTitleBox");
+            var jComponentSelectTitle = customeSelect.find(".jComponentSelectTitle");
+            var jComponentSelectList = customeSelect.find(".jComponentSelectList");
+            var jComponentSelectIcon = customeSelect.find(".jComponentSelectIcon");
+            var option = customeSelect.find(".option");
+
+            /**
+             * wrap Customer Select Div
+             */
+            customeSelect.width(settings.width).height(settings.height);
+            jComponentSelectTitle.width(settings.width - settings.height - 2).height(settings.height).css({"line-height": settings.height+"px"});
+            jComponentSelectIcon.width(settings.height).height(settings.height);
+
+            jComponentSelectList.css({top: settings.height-1});
+
+            option.width(settings.width).height(settings.height).css({"line-height": settings.height+"px"});
+
+
+
+
+            function selectList() {
+                if ( jComponentSelectList.css("display") == "none" ) {
+                    jComponentSelectList.show();
+                    jComponentSelectIcon.addClass("jComponentSelectIconOpen");
+                } else {
+                    jComponentSelectList.hide();
+                    jComponentSelectIcon.removeClass("jComponentSelectIconOpen");
+                }
+            }
+
+            jComponentSelectTitleBox.click(function(){
+                selectList();
+            });
+
+
+            function init() {
+                var obj = that.find(":selected") || option.eq(0);
+                var value = $.trim(obj.attr("value"));
+                var name = $.trim(obj.html());
+
+                jComponentSelectTitle.html(name).attr("title",name);
+            }
+
+            init();
+
+            that.change(function(){
+                init();
+            });
+
+            option.click(function(){
+
+                var obj = $(this);
+                var value = $.trim(obj.attr("value"));
+                var name = $.trim(obj.html());
+                jComponentSelectTitle.html(name).attr("title",name);
+                that.find("option[value='" + value + "']").attr("selected","selected");
+
+                selectList();
+            });
+
+
+        });
+    };
+})(jQuery, window, document )

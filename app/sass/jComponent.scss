@@ -13,6 +13,7 @@
     cursor:pointer;
     opacity:0;
     filter:alpha(opacity=0)\9;
+    outline:none;
   }
 
   .jComponentIcon {
@@ -88,3 +89,82 @@
   }
 
 }
+
+.jComponentSelect {
+  position:relative;
+  width:160px;
+  height:30px;
+  z-indent:1;
+  margin:100px auto;
+
+  .jComponentSelectTitleBox {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    line-height:200%;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    cursor:pointer;
+    overflow:hidden;
+    background-color: #fff;
+    border-radius:3px;
+  }
+  .jComponentSelectTitle {
+    float:left;
+    width:128px;
+    height:30px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    text-indent:10px;
+  }
+
+  .jComponentSelectIcon {
+    float:right;
+    width:30px;
+    height:30px;
+    background:url("../images/jComponent/jComponent_select_icon.png") scroll no-repeat left top transparent;
+  }
+
+  .jComponentSelectIconOpen {
+    background-position: 0 -30px;
+  }
+
+  .jComponentSelectList {
+    display:none;
+    position:absolute;
+    top:29px;
+    left:0;
+    width:100%;
+    height:auto;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    background-color:#fff;
+    overflow:hidden;
+    border-radius:3px;
+  }
+
+  .option {
+    float:left;
+    display:block;
+    width:100%;
+    height:30px;
+    line-height:200%;
+    border-top:1px solid #ccc;
+    box-sizing:border-box;
+    text-indent:10px;
+    overflow:hidden;
+
+    &:first-child {
+      border-top:none;
+    }
+
+    &:hover {
+      background-color:#efefef;
+    }
+  }
+
+}
+
