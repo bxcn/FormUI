@@ -22,8 +22,65 @@
     background-image: url("../images/jComponent/jComponent_icon.png");
   }
 
-  .jComponent:checked + .jComponentIcon{
-    //background-position: 0 0;
+  // orange radio 16 size
+  .radioOrange16 {
+    & + .jComponentIcon {
+      background-position: 0 -16px;
+    }
+
+    &:checked + .jComponentIcon {
+      background-position: -16px -16px;
+    }
+  }
+  // blue radio 16 size
+  .radioBlue16 {
+    & + .jComponentIcon {
+      background-position: 0 0;
+    }
+
+    &:checked + .jComponentIcon {
+      background-position: -16px 0;
+    }
+  }
+
+  // blue checkbo 20 size
+  .checkboxOrange20 {
+    & + .jComponentIcon {
+      background-position: 0 -64px;
+    }
+    &:checked + .jComponentIcon {
+      background-position: -20px -64px;
+    }
+  }
+
+
+  // orange checkbo 16 size
+  .checkboxOrange16 {
+    & + .jComponentIcon {
+      background-position: 0 -48px;
+    }
+    &:checked + .jComponentIcon {
+      background-position: -16px -48px;
+    }
+  }
+
+  // blue checkbo 16 size
+  .checkboxBlue16 {
+    & + .jComponentIcon {
+      background-position: 0 -32px;
+    }
+    &:checked + .jComponentIcon {
+      background-position: -16px -32px;
+    }
+  }
+  // blue checkbo 20 size
+  .checkboxBlue20 {
+    & + .jComponentIcon {
+      background-position: 0 -84px;
+    }
+    &:checked + .jComponentIcon {
+      background-position: -20px -84px;
+    }
   }
 
   .jComponentLabel {

@@ -9,9 +9,20 @@ $(function(){
             setting : {
                 iconSize:16,
                 backgroundImage:"", // ICON图片
-                position:[0,0] // ICON图片定位
+                position:[0,0], // ICON图片定位
+                addInputClass: "radio16"
             }
         };
+
+        var browser=navigator.appName
+        var b_version=navigator.appVersion
+        var version=b_version.split(";");
+        var trim_Version=version[1].replace(/[ ]/g,"");
+        var ltIE8 = false;
+
+        if ( trim_Version == 'MSIE6.0' ||  trim_Version == 'MSIE7.0' ||  trim_Version == 'MSIE8.0') {
+            ltIE8 = true;
+        }
 
         var params = $.extend({},defaults.setting, options);
 
@@ -36,8 +47,9 @@ $(function(){
             // 在input 元素下面插入一个HTML元素：<i class='jComponentIcon'></i>
             // 并且返回这个新插入的HTML元素
             var jComponentIcon = inputElement.addClass("jComponent")
-                                                   .after("<i class='jComponentIcon'></i>")
-                                                   .next(".jComponentIcon");
+                                              .addClass(params.addInputClass+params.iconSize[0])
+                                              .after("<i class='jComponentIcon'></i>")
+                                              .next(".jComponentIcon");
 
             // icon尺寸大小
             jComponentIcon.width(params.iconSize[0] + "px");
@@ -80,12 +92,14 @@ $(function(){
                }
            }
 
-            inputElement.change(function(){
-                changeClickState($(this));
-            });
-
-            //初始化
-            changeClickState(inputElement);
+            // 支持 IE8 以下浏览器
+            if ( ltIE8 ) {
+                inputElement.change(function(){
+                    changeClickState($(this));
+                });
+                //初始化
+                changeClickState(inputElement);
+            }
 
         });
     }
@@ -94,16 +108,19 @@ $(function(){
     $(".sex").jComponent({
         inputName: "name",
         iconSize: [16,16],
-        position: [0,0]
+        position: [0,0],
+        addInputClass: "radioOrange"
     });
     $(".checkbox").jComponent({
         inputName: "name",
         iconSize: [16,16],
-        position: [0,-48]
+        position: [0,-48],
+        addInputClass: "checkboxBlue"
     });
     $(".checkbox14").jComponent({
         inputName: "name",
         iconSize: [20,20],
-        position: [0,-64]
+        position: [0,-64],
+        addInputClass: "checkboxOrange"
     });
 });
