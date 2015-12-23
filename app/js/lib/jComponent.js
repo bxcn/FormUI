@@ -104,7 +104,6 @@ $(function(){
     $(".checkbox14").jComponent({
         inputName: "name",
         iconSize: [20,20],
-        position: [0,-60],
-        backgroundImage:"../images/jComponent/jComponent_icon_20X20.png"
+        position: [0,-64]
     });
 });
