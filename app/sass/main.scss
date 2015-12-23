@@ -1,0 +1,30 @@
+@import "reset";
+@import "common";
+
+.sex {
+  width:100px;
+  height:16px;
+}
+.checkbox {
+  width:100px;
+  height:16px;
+}
+
+.label {
+  width:auto;
+  height:16px;
+  font-size:14px;
+  margin-left:10px;
+}
+.checkbox14 {
+  width:100px;
+  height:20px;
+  .label {
+    width:auto;
+    height:20px;
+    font-size:14px;
+    line-height:20px;
+    margin-left:10px;
+  }
+
+}

@@ -1,0 +1,152 @@
+html {
+  position: relative;
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+  width: 100%;
+  min-width: 1320px;
+  line-height: 120%;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+@mixin boxAuto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// margin-top
+@for $i from 1 through 50 {
+  $var: $i * 5;
+  .mt#{$var} {
+    margin-top: $var + px;
+  }
+}
+
+// margin-right
+@for $i from 1 through 50 {
+  $var: $i * 5;
+  .mr#{$var} {
+    margin-right: $var + px;
+  }
+}
+
+// margin-left
+@for $i from 1 through 50 {
+  $var: $i * 5;
+  .ml#{$var} {
+    margin-left: $var + px;
+  }
+}
+
+.fb {
+  font-weight: bold;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tr {
+  text-align: right;
+}
+
+.f12 {
+  font-size: 12px;
+}
+
+.f14 {
+  font-size: 14px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f30 {
+  font-size: 30px;
+}
+
+.red {
+  color: #da004e;
+}
+
+.gray {
+  color: #4d4d4d;
+}
+
+.yellow {
+  color: #b3d465;
+}
+
+.orange {
+  color: #f60;
+}
+
+.cf60 {
+  color: #f60;
+}
+
+.cb2b {
+  color: #b2b2b2;
+}
+
+.cbfb {
+  color: #bfbfbf;
+}
+
+.blue {
+  color: #38f;
+}
+
+.cfff {
+  color: #fff;
+}
+
+.c000 {
+  color: #424242;
+}
+
+.c999 {
+  color: #999;
+}
+
+.c4d4 {
+  color: #4d4d4d;
+}
+
+.clearfix {
+  overflow: hidden;
+  &:after {
+    display: block;
+    width: 100%;
+    height: auto;
+    content: "";
+  }
+}
