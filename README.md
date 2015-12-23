@@ -1,3 +1,2 @@
-Jquery.validate 表单验证Demo
+自定义：Radio Checkbox Select
 =======================
-http://jqueryvalidation.org/documentation/
