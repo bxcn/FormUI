@@ -94,8 +94,11 @@
   position:relative;
   width:160px;
   height:30px;
-  z-indent:1;
   margin:100px auto;
+
+  &.zIndex100 {
+    z-index:100;
+  }
 
   .jComponentSelectTitleBox {
     position:absolute;
@@ -106,7 +109,6 @@
     line-height:200%;
     border:1px solid #ccc;
     box-sizing:border-box;
-    cursor:pointer;
     overflow:hidden;
     background-color: #fff;
     border-radius:3px;
@@ -135,27 +137,26 @@
   .jComponentSelectList {
     display:none;
     position:absolute;
-    top:29px;
+    top:0;
     left:0;
     width:100%;
     height:auto;
+    overflow:hidden;
+    border-radius:3px;
     border:1px solid #ccc;
     box-sizing:border-box;
     background-color:#fff;
-    overflow:hidden;
-    border-radius:3px;
   }
 
   .option {
     float:left;
-    display:block;
     width:100%;
     height:30px;
     line-height:200%;
-    border-top:1px solid #ccc;
-    box-sizing:border-box;
     text-indent:10px;
     overflow:hidden;
+    border-top:1px solid #ccc;
+    box-sizing:border-box;
 
     &:first-child {
       border-top:none;

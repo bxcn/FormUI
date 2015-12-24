@@ -120,6 +120,7 @@
 
 
         var defaults = {
+            height:30
         };
 
         var settings = $.extend({},defaults, options);
@@ -175,9 +176,11 @@
 
             function selectList() {
                 if ( jComponentSelectList.css("display") == "none" ) {
+                    customeSelect.addClass("zIndex100");
                     jComponentSelectList.show();
                     jComponentSelectIcon.addClass("jComponentSelectIconOpen");
                 } else {
+                    customeSelect.removeClass("zIndex100");
                     jComponentSelectList.hide();
                     jComponentSelectIcon.removeClass("jComponentSelectIconOpen");
                 }
