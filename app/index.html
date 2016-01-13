@@ -6,58 +6,143 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/jComponent.css">
     <script type="text/javascript" src="js/min/jquery.min.js"></script>
-
     <script type="text/javascript" src="js/lib/jComponent.js"></script>
-    <!--[if lte IE 8]>
-   <![endif]-->
-
   </head>
   <body>
+  <style>
+    .container {
+      width:500px;
+      height:auto;
+      margin:20px auto;
+      padding:30px;
+      border:1px solid #e5e5e5;
+      border-radius:5px;
+      font-family:"宋体";
+    }
+    h1 {
+      width:100%;
+      height:50px;
+      font:bold 18px/50px "microsoft yahei";
+    }
+    .item {
+      width:100%;
+      height:auto;
+      padding:10px 0;
+    }
+    .sex,
+    .sex1,
+    .checkbox,
+    .checkbox14{
+      width:auto;
+      height:20px;
 
-    <div class="sex">
-      <input type="radio"  name="name" value="1" checked>
-      <div class="label jComponentLabel">男</div>
+    }
+    label {margin-left:5px;}
+    .red{color:#f60;}
+  </style>
+  <div class="container">
+    <h1 class="red">采用Raido和CheckBox组件的方式在线问卷大调查</h1>
+    <div class="item">
+      <h1>1.请选择性别？</h1>
+      <div class="sex">
+        <input type="radio"  name="name" value="1" >
+        <label>男</label>
+      </div>
+      <div class="sex">
+        <input type="radio" name="name" value="1">
+        <label>女</label>
+      </div>
     </div>
-
-    <div class="sex">
-      <input type="radio" name="name" value="1">
-      <div class="label jComponentLabel">女</div>
+    <div class="item">
+      <h1>2.你喜欢JavaScript这门动态弱类型语言吗？</h1>
+      <div class="sex1">
+        <input type="radio"  name="name1" value="1" >
+        <label>喜欢</label>
+      </div>
+      <div class="sex1">
+        <input type="radio" name="name1" value="1">
+        <label>不喜欢</label>
+      </div>
     </div>
-
-
-    <div class="checkbox">
-      <input type="checkbox"  name="checkbox" value="1" >
-      <div class="label jComponentLabel">音乐</div>
+    <div class="item">
+      <h1>3.我的优点有那些</h1>
+      <div class="checkbox">
+        <input type="checkbox"  name="checkbox" value="1"  >
+        <label>好男人/好女人</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="checkbox" value="1" >
+        <label>富二代</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="checkbox" value="1" >
+        <label>星二代</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="checkbox" value="1" >
+        <label>学习好</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="checkbox" value="1" >
+        <label>长的漂亮</label>
+      </div>
     </div>
-
-    <div class="checkbox">
-      <input type="checkbox" name="checkbox" value="1" >
-      <div class="label jComponentLabel">投资</div>
+    <div class="item">
+      <h1>4.我计过的书箱有那些？</h1>
+      <div class="checkbox14">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《C++》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《JavaScript》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《C#》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《React》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《C++》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《JavaScript》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《C#》</label>
+      </div>
+      <div class="checkbox14">
+        <input type="checkbox" name="checkbox" value="1"  >
+        <label>《React》</label>
+      </div>
     </div>
-
-    <div class="checkbox14">
-      <input type="checkbox"  name="checkbox" value="1" >
-      <div class="label jComponentLabel">互联网</div>
-    </div>
-
-    <div class="checkbox14">
-      <input type="checkbox" name="checkbox" value="1" checked >
-      <div class="label jComponentLabel">家电</div>
-    </div>
-
-<!--
-  <div class="jComponentRadioModule">
-    <input type="radio" class="jComponentRadio" name="name" value="1">
-    <i class="jComponentRadioIcon"></i>
-    <div class="jComponentRadioLabel">性别女</div>
   </div>
--->
+  <div class="container">
+    <h1>代码调用方式</h1>
+    <pre>
+    $(function(){
+        $(".sex").radioOrange();
+        $(".sex1").radioBlue();
+        $(".checkbox").checkboxOrange();
+        $(".checkbox14").checkboxBlue();
+      })
+    </pre>
+  </div>
 
-    <style>
-
-
-
-    </style>
 
     <select class="jComponentSelect">
       <option value="-1">请选择</option>
@@ -142,28 +227,12 @@
           "name":"name"
         });
 
-        $(".sex").jComponent({
-          inputName: "name",
-          iconSize: [16,16],
-          position: [0,0],
-          addInputClass: "radioOrange"
-        });
-        $(".checkbox").jComponent({
-          inputName: "name",
-          iconSize: [16,16],
-          position: [0,-48],
-          addInputClass: "checkboxBlue"
-        });
-        $(".checkbox14").jComponent({
-          inputName: "name",
-          iconSize: [20,20],
-          position: [0,-64],
-          addInputClass: "checkboxOrange"
-        });
+        $(".sex").radioOrange();
+        $(".sex1").radioBlue();
+        $(".checkbox").checkboxOrange();
+        $(".checkbox14").checkboxBlue();
       });
     </script>
-
-
 
   </body>
 </html>

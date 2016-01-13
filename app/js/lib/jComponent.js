@@ -2,6 +2,7 @@
  * Created by Administrator on 2015/12/22.
  */
 ;(function(){
+/*
 
     $.fn.jComponent = function( options ) {
 
@@ -14,8 +15,8 @@
             }
         };
 
-        var browser=navigator.appName
-        var b_version=navigator.appVersion
+        var browser=navigator.appName;
+        var b_version=navigator.appVersion;
         var version=b_version.split(";");
         var trim_Version=version[1].replace(/[ ]/g,"");
         var ltIE8 = false;
@@ -31,9 +32,9 @@
             var inputElement = that.find("input");
             var inputType = $.trim(inputElement.attr("type"))
             var inputName = $.trim(inputElement.attr("name"));
-            var jComponentLabel = that.find(".jComponentLabel");
+            var jComponentLabel = that.find("label");
 
-            //  指定容器
+/!*            //  指定容器
             if ( !that.hasClass("jComponentContainer")) {
                 that.addClass("jComponentContainer");
             }
@@ -41,23 +42,23 @@
             // 设置容器尺寸
             var containerWidth = that.css("width");
             var containerHeight= that.css("height");
-            that.css({"width": containerWidth, "height": containerHeight});
+            that.css({"width": containerWidth, "height": containerHeight});*!/
 
             // 给input元素添加 jComponent
             // 在input 元素下面插入一个HTML元素：<i class='jComponentIcon'></i>
             // 并且返回这个新插入的HTML元素
             var jComponentIcon = inputElement.addClass("jComponent")
-                                              .addClass(params.addInputClass+params.iconSize[0])
+                                              .addClass(params.addInputClass)
                                               .after("<i class='jComponentIcon'></i>")
                                               .next(".jComponentIcon");
 
-            // icon尺寸大小
+/!*            // icon尺寸大小
             jComponentIcon.width(params.iconSize[0] + "px");
             jComponentIcon.height(params.iconSize[1] + "px");
 
             if ( params.backgroundImage != '' ) {
                 jComponentIcon.css({"background-image": "url('" + params.backgroundImage + "')"});
-            }
+            }*!/
 
             // 设置文本尺寸
             var jComponentLabelWidth = jComponentLabel.css("width");
@@ -72,19 +73,19 @@
 
                if ( _that.prop("checked") ) {
 
-                   /**
+                   /!**
                     * 每次有新的选中状态时就清除所有已选中的radio
-                    */
+                    *!/
                    if ( inputType == "radio" ) {
                        // 清除所有的样式
                        inputElement.closest("form,body")
                            .find("input[name='" + inputName + "']")
                            .next(".jComponentIcon")
-                           .css({"background-position": left + "px "+ top +"px"});
+                           .css({"background-position":  left + "px "+ top +"px"});
                    }
 
 
-                   _that.next().css({"background-position": (left - params.iconSize[0]) + "px " +  top +"px"});
+                   _that.next().css({"background-position": "-16px " +  top +"px"});
                    // 此代码在ie8浏览器下无效（不支持动态添加class中的图片），但在兼容模式下可以，
                    // jComponentIcon.addClass("jComponentChecked");
                } else {
@@ -103,7 +104,165 @@
 
         });
     }
+
+  ;
+*/
+
+  function Radio( container, options ) {
+    var defaults = {
+      style: "radioOrange",
+      top:0,
+      left:0,
+      width:16,
+      height:16
+    };
+    // jquery匹配的窗口
+    this.container = container;
+    // 继承
+    this.options = $.extend({}, defaults, options );
+    //
+    this.init();
+  }
+
+  Radio.prototype = {
+    constructor: Radio,
+    init: function() {
+      var self = this;
+      var isIE8 = self.isIE8();
+
+      return this.container.each(function(){
+        var that = $(this);
+        var inputElement = that.find("input");
+
+        if ( !that.hasClass("jComponentContainer")) {
+          that.addClass("jComponentContainer");
+        }
+
+        inputElement.addClass("jComponent").addClass(self.options.style);
+
+        // 防止对同一个container窗口多次定义，产生的多个i标签
+        if ( that.find("i").size() == 0) {
+          inputElement.after("<i class='jComponentIcon'></i>");
+          inputElement.next("i").css({"width": self.options.width, "height": self.options.height});
+        }
+
+        // 定义container窗口的大小
+        self.setContainerSize( that );
+
+        // 支持 IE8 以下浏览器
+        if ( isIE8 ) {
+          inputElement.change(function(){
+            self.hackIE(inputElement);
+          });
+          //初始化
+          self.hackIE(inputElement);
+        }
+
+      });
+    },
+    isIE8:function() {
+
+      var version=navigator.appVersion.split(";");
+      var trim_Version=version[1].replace(/[ ]/g,"");
+
+      if ( trim_Version == 'MSIE6.0' ||
+           trim_Version == 'MSIE7.0' ||
+           trim_Version == 'MSIE8.0') {
+
+        return true;
+      }
+
+      return false;
+    },
+    setContainerSize: function(that) {
+      // 设置容器尺寸
+      that = $(that);
+      var containerWidth = that.css("width");
+      var containerHeight= that.css("height");
+      that.css({"width": containerWidth, "height": containerHeight});
+    },
+    hackIE: function( that ) {
+
+      var self = this;
+      var left = self.options.left;
+      var top = self.options.top;
+
+      if ( that.prop("checked") ) {
+
+        /**
+         * 每次有新的选中状态时就清除所有已选中的radio
+         */
+        if ( that.attr("type") == "radio" ) {
+          // 清除所有的样式
+          $("input[name='" + that.attr("name") + "']").next("i").css({"background-position": left + "px " +  top +"px"});
+        }
+
+        that.next().css({"background-position": left - self.options.width + "px " +  top +"px"});
+
+        // 此代码在ie8浏览器下无效（不支持动态添加class中的图片），但在兼容模式下可以，
+        // _that.next("i").addClass("jComponentChecked");
+
+      } else {
+        that.next().css({"background-position": left + "px " +  top +"px"});
+      }
+
+    }
+
+
+  }
+
+  $.fn.radioOrange = function( options ){
+
+    options = options || {};
+    $.extend(options,{
+      style: "radioOrange",
+      top:-16,
+      left:0
+    });
+    return new Radio(this, options)
+  }
+
+  $.fn.radioBlue = function( options ){
+
+    options = options || {};
+    $.extend(options,{
+      style: "radioBlue",
+      top:0,
+      left:0
+    });
+    return new Radio(this, options)
+  }
+
+
+  $.fn.checkboxOrange = function( options ){
+
+    options = options || {};
+    $.extend(options,{
+      style: "checkboxOrange",
+      top:-50,
+      left:0,
+      width:18,
+      height:18
+    });
+    return new Radio(this, options)
+  }
+
+  $.fn.checkboxBlue = function( options ){
+
+    options = options || {};
+    $.extend(options,{
+      style: "checkboxBlue",
+      top:-32,
+      left:0,
+      width:18,
+      height:18
+    });
+    return new Radio(this, options)
+  }
+
 })();
+
+
 
 ;(function($, window, document, undefined ){
     $.fn.jComponentSelect = function( options ) {

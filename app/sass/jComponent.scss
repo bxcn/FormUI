@@ -24,7 +24,7 @@
   }
 
   // orange radio 16 size
-  .radioOrange16 {
+  .radioOrange {
     & + .jComponentIcon {
       background-position: 0 -16px;
     }
@@ -33,8 +33,9 @@
       background-position: -16px -16px;
     }
   }
+
   // blue radio 16 size
-  .radioBlue16 {
+  .radioBlue {
     & + .jComponentIcon {
       background-position: 0 0;
     }
@@ -44,50 +45,26 @@
     }
   }
 
-  // blue checkbo 20 size
-  .checkboxOrange20 {
+  // blue checkbo 18 size
+  .checkboxOrange {
     & + .jComponentIcon {
-      background-position: 0 -64px;
+      background-position: 0 -50px;
     }
     &:checked + .jComponentIcon {
-      background-position: -20px -64px;
+      background-position: -18px -50px;
     }
   }
 
 
-  // orange checkbo 16 size
-  .checkboxOrange16 {
-    & + .jComponentIcon {
-      background-position: 0 -48px;
-    }
-    &:checked + .jComponentIcon {
-      background-position: -16px -48px;
-    }
-  }
-
-  // blue checkbo 16 size
-  .checkboxBlue16 {
+  // blue checkbo 18 size
+  .checkboxBlue {
     & + .jComponentIcon {
       background-position: 0 -32px;
     }
     &:checked + .jComponentIcon {
-      background-position: -16px -32px;
+      background-position: -18px -32px;
     }
   }
-  // blue checkbo 20 size
-  .checkboxBlue20 {
-    & + .jComponentIcon {
-      background-position: 0 -84px;
-    }
-    &:checked + .jComponentIcon {
-      background-position: -20px -84px;
-    }
-  }
-
-  .jComponentLabel {
-    float:left;
-  }
-
 }
 
 .jComponentSelect {
