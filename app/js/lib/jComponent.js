@@ -57,7 +57,7 @@ JTheme.prototype = {
   isIE8:function() {
 
     var version=navigator.appVersion.split(";");
-    var trim_Version=version[1].replace(/[ ]/g,"");
+    var trim_Version=(version[1]||"").replace(/[ ]/g,"");
 
     if ( trim_Version == 'MSIE6.0' ||
       trim_Version == 'MSIE7.0' ||
