@@ -41,7 +41,7 @@ JTheme.prototype = {
       }
 
       // 定义container窗口的大小
-      self.setContainerSize( that );
+     // self.setContainerSize( that );
 
       // 支持 IE8 以下浏览器
       if ( isIE8 ) {
