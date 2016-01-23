@@ -106,6 +106,7 @@ JTheme.prototype = {
   },
   addChecked: function() {
     if ( this.isIE8() ) {
+      // 先删除checked属性 解决全选之前有选中的checkbox，那么再点全选按钮时，选中的元素取消选中，未选中的则反之
       this.checkbox.removeAttr("checked").click();
     } else {
       this.checkbox.prop("checked", true);
@@ -114,6 +115,7 @@ JTheme.prototype = {
   },
   removeChecked: function(){
     if ( this.isIE8() ) {
+      // 先增加checked属性 解决取消全选之前有未选中的checkbox，那么再点取消按钮时，未选中的元素选中，选中的则反之
       this.checkbox.prop("checked", true).click();
     } else {
       this.checkbox.removeAttr("checked");
