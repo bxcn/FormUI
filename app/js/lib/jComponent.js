@@ -106,7 +106,7 @@ JTheme.prototype = {
   },
   addChecked: function() {
     if ( this.isIE8() ) {
-      this.checkbox.click();
+      this.checkbox.removeAttr("checked").click();
     } else {
       this.checkbox.prop("checked", true);
     }
@@ -114,7 +114,7 @@ JTheme.prototype = {
   },
   removeChecked: function(){
     if ( this.isIE8() ) {
-      this.checkbox.click();
+      this.checkbox.prop("checked", true).click();
     } else {
       this.checkbox.removeAttr("checked");
     }
