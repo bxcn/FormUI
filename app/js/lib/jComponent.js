@@ -11,11 +11,14 @@ function JTheme( container, options ) {
     height:16
   };
   // jquery匹配的窗口
-  this.container = container;
+  this.container = $(container);
+  this.checkbox = this.container.find("input[type='checkbox']");
   // 继承
   this.options = $.extend({}, defaults, options );
   //初始化
   this.init();
+
+  return this;
 }
 
 JTheme.prototype = {
@@ -24,7 +27,7 @@ JTheme.prototype = {
     var self = this;
     var isIE8 = self.isIE8();
 
-    return this.container.each(function(){
+    return self.container.each(function(){
       var that = $(this);
       var inputElement = that.find("input");
 
@@ -41,7 +44,7 @@ JTheme.prototype = {
       }
 
       // 定义container窗口的大小
-     // self.setContainerSize( that );
+      // self.setContainerSize( that );
 
       // 支持 IE8 以下浏览器
       if ( isIE8 ) {
@@ -68,12 +71,12 @@ JTheme.prototype = {
 
     return false;
   },
-  setContainerSize: function(that) {
+  setContainerSize: function(container) {
     // 设置容器尺寸
-    that = $(that);
-    var containerWidth = that.css("width");
-    var containerHeight= that.css("height");
-    that.css({"width": containerWidth, "height": containerHeight});
+    container = $(container);
+    var containerWidth = container.css("width");
+    var containerHeight= container.css("height");
+    container.css({"width": containerWidth, "height": containerHeight});
   },
   hackIE: function( that ) {
 
@@ -100,118 +103,28 @@ JTheme.prototype = {
       that.next().css({"background-position": left + "px " +  top +"px"});
     }
 
-  }
+  },
+  addChecked: function() {
+    if ( this.isIE8() ) {
+      this.checkbox.click();
+    } else {
+      this.checkbox.prop("checked", true);
+    }
+    return this;
+  },
+  removeChecked: function(){
+    if ( this.isIE8() ) {
+      this.checkbox.click();
+    } else {
+      this.checkbox.removeAttr("checked");
+    }
 
+    return this;
+  }
 
 }
 
 ;(function(){
-/*
-
-    $.fn.jComponent = function( options ) {
-
-        var defaults = {
-            setting : {
-                iconSize:16,
-                backgroundImage:"", // ICON图片
-                position:[0,0], // ICON图片定位
-                addInputClass: "radio16"
-            }
-        };
-
-        var browser=navigator.appName;
-        var b_version=navigator.appVersion;
-        var version=b_version.split(";");
-        var trim_Version=version[1].replace(/[ ]/g,"");
-        var ltIE8 = false;
-
-        if ( trim_Version == 'MSIE6.0' ||  trim_Version == 'MSIE7.0' ||  trim_Version == 'MSIE8.0') {
-            ltIE8 = true;
-        }
-
-        var params = $.extend({},defaults.setting, options);
-
-        return this.each(function(){
-            var that = $(this);
-            var inputElement = that.find("input");
-            var inputType = $.trim(inputElement.attr("type"))
-            var inputName = $.trim(inputElement.attr("name"));
-            var jComponentLabel = that.find("label");
-
-/!*            //  指定容器
-            if ( !that.hasClass("jComponentContainer")) {
-                that.addClass("jComponentContainer");
-            }
-
-            // 设置容器尺寸
-            var containerWidth = that.css("width");
-            var containerHeight= that.css("height");
-            that.css({"width": containerWidth, "height": containerHeight});*!/
-
-            // 给input元素添加 jComponent
-            // 在input 元素下面插入一个HTML元素：<i class='jComponentIcon'></i>
-            // 并且返回这个新插入的HTML元素
-            var jComponentIcon = inputElement.addClass("jComponent")
-                                              .addClass(params.addInputClass)
-                                              .after("<i class='jComponentIcon'></i>")
-                                              .next(".jComponentIcon");
-
-/!*            // icon尺寸大小
-            jComponentIcon.width(params.iconSize[0] + "px");
-            jComponentIcon.height(params.iconSize[1] + "px");
-
-            if ( params.backgroundImage != '' ) {
-                jComponentIcon.css({"background-image": "url('" + params.backgroundImage + "')"});
-            }*!/
-
-            // 设置文本尺寸
-            var jComponentLabelWidth = jComponentLabel.css("width");
-            var jComponentLabelHeight= jComponentLabel.css("height");
-            jComponentLabel.css({"width": jComponentLabelWidth, "height": jComponentLabelHeight});
-
-            // 解决IE8中的默认选中的效果
-            function changeClickState( _that ) {
-
-                var left = params.position[0];
-                var top = params.position[1];
-
-               if ( _that.prop("checked") ) {
-
-                   /!**
-                    * 每次有新的选中状态时就清除所有已选中的radio
-                    *!/
-                   if ( inputType == "radio" ) {
-                       // 清除所有的样式
-                       inputElement.closest("form,body")
-                           .find("input[name='" + inputName + "']")
-                           .next(".jComponentIcon")
-                           .css({"background-position":  left + "px "+ top +"px"});
-                   }
-
-
-                   _that.next().css({"background-position": "-16px " +  top +"px"});
-                   // 此代码在ie8浏览器下无效（不支持动态添加class中的图片），但在兼容模式下可以，
-                   // jComponentIcon.addClass("jComponentChecked");
-               } else {
-                   _that.next().css({"background-position": left + "px "+  top +"px"});
-               }
-           }
-
-            // 支持 IE8 以下浏览器
-            if ( ltIE8 ) {
-                inputElement.change(function(){
-                    changeClickState($(this));
-                });
-                //初始化
-                changeClickState(inputElement);
-            }
-
-        });
-    }
-
-  ;
-*/
-
 
   $.fn.radioOrange = function( options ){
 
@@ -238,7 +151,7 @@ JTheme.prototype = {
 
   $.fn.checkboxOrange = function( options ){
 
-    options = options || {};
+    options = options || {};-
     $.extend(options,{
       style: "checkboxOrange",
       top:-50,
@@ -263,8 +176,6 @@ JTheme.prototype = {
   }
 
 })();
-
-
 
 ;(function($, window, document, undefined ){
     $.fn.jComponentSelect = function( options ) {

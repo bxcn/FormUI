@@ -32,7 +32,9 @@
     .sex,
     .sex1,
     .checkbox,
-    .checkbox14{
+    .checkbox14,
+    .checkbox15,
+    .checkbox16{
       width:auto;
       height:20px;
 
@@ -128,6 +130,34 @@
       <div class="checkbox14">
         <input type="checkbox" name="checkbox" value="1"  >
         <label>《React》</label>
+      </div>
+    </div>
+    <div class="item">
+      <h1>5.是否全选？</h1>
+      <div class="checkbox15 ">
+        <input type="checkbox" class="allCheck"  name="checkbox" value="1" >
+        <label>全部</label>
+      </div>
+      <br/>
+      <div class="checkbox16">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox16">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox16">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox16">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
+      </div>
+      <div class="checkbox16">
+        <input type="checkbox"  name="checkbox" value="1" >
+        <label>《Java》</label>
       </div>
     </div>
   </div>
@@ -230,9 +260,21 @@
         $(".sex").radioOrange();
         $(".sex1").radioBlue();
         $(".checkbox").checkboxOrange();
-        $(".checkbox14").checkboxBlue();
+        $(".allCheck").checkboxBlue();
+
+        var checkbox14 = $(".checkbox14, .checkbox15").checkboxBlue();
+        var checkbox16 = $(".checkbox16").checkboxBlue();
+
+        $(".allCheck").change(function(){
+
+          if ( $(this).prop("checked") ) {
+            checkbox16.addChecked();
+          } else {
+            checkbox16.removeChecked();
+          }
+
+        });
       });
     </script>
-
   </body>
 </html>
