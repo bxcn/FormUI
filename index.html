@@ -5,7 +5,7 @@
     <title>radio checkbox select jQuery.component</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/jComponent.css">
-    <script type="text/javascript" src="js/min/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
     <script type="text/javascript" src="js/lib/jComponent.js"></script>
   </head>
   <body>
@@ -173,89 +173,8 @@
     </pre>
   </div>
 
-
-    <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="天津市" selected>天津市</option>
-      <option value="上海市">上海市</option>
-      <option value="广州市">广州市</option>
-      <option value="青岛市">青岛市</option>
-      <option value="济南市">济南市</option>
-      <option value="菏泽市">菏泽市</option>
-    </select>
-
-    <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="天津市" selected>天津市</option>
-      <option value="上海市">上海市</option>
-      <option value="广州市">广州市</option>
-      <option value="青岛市">青岛市</option>
-      <option value="济南市">济南市</option>
-      <option value="菏泽市">菏泽市</option>
-    </select>
-
-    <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="天津市" selected>天津市</option>
-      <option value="上海市">上海市</option>
-      <option value="广州市">广州市</option>
-      <option value="青岛市">青岛市</option>
-      <option value="济南市">济南市</option>
-      <option value="菏泽市">菏泽市</option>
-    </select>
-  <!--  <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="北京市">天津市</option>
-      <option value="北京市">上海市</option>
-      <option value="北京市">广州市</option>
-      <option value="北京市">青岛市</option>
-      <option value="北京市">济南市</option>
-      <option value="北京市">菏泽市</option>
-    </select>
-    <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="北京市">天津市</option>
-      <option value="北京市">上海市</option>
-      <option value="北京市">广州市</option>
-      <option value="北京市">青岛市</option>
-      <option value="北京市">济南市</option>
-      <option value="北京市">菏泽市</option>
-    </select>
-    <select class="jComponentSelect">
-      <option value="-1">请选择</option>
-      <option value="北京市">北京市</option>
-      <option value="北京市">天津市</option>
-      <option value="北京市">上海市</option>
-      <option value="北京市">广州市</option>
-      <option value="北京市">青岛市</option>
-      <option value="北京市">济南市</option>
-      <option value="北京市">菏泽市</option>
-    </select>-->
-
-<!--
-    <div class="jComponentSelect">
-      <div class="jComponentSelectTitleBox">
-        <div class="jComponentSelectTitle" title="请选择">请选择请选择请选择请选择请选择</div>
-        <div class="jComponentSelectIcon"></div>
-      </div>
-      <ul class="jComponentSelectList">
-        <li class="option" value="{optionValue}">{optionName}</li>
-      </ul>
-    </div>-->
-
     <script>
       $(function(){
-
-        $(".jComponentSelect").jComponentSelect({
-          width:300,
-          /*height:50,*/
-          "name":"name"
-        });
 
         $(".sex").radioOrange();
         $(".sex1").radioBlue();
@@ -264,15 +183,12 @@
 
         var checkbox14 = $(".checkbox14, .checkbox15").checkboxBlue();
         var checkbox16 = $(".checkbox16").checkboxBlue();
-
         $(".allCheck").change(function(){
-
           if ( $(this).prop("checked") ) {
             checkbox16.addChecked();
           } else {
             checkbox16.removeChecked();
           }
-
         });
       });
     </script>

@@ -1,0 +1,35 @@
+.jComponentContainer {
+  position: relative;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.jComponentContainer .jComponent {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0) \9;
+  outline: none;
+}
+.jComponentContainer .jComponentIcon {
+  float: left;
+  width: 16px;
+  height: 16px;
+  background-image: url("../images/jComponent/jComponent_icon.png");
+}
+.jComponentContainer .radioOrange:checked + .jComponentIcon {
+  background-position: -16px -16px;
+}
+.jComponentContainer .radioBlue:checked + .jComponentIcon {
+  background-position: -16px 0;
+}
+.jComponentContainer .checkboxOrange:checked + .jComponentIcon {
+  background-position: -18px -50px;
+}
+.jComponentContainer .checkboxBlue:checked + .jComponentIcon {
+  background-position: -18px -32px;
+}
