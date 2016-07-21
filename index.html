@@ -1,196 +1,113 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>radio checkbox select jQuery.component</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/jComponent.css">
-    <script type="text/javascript" src="js/lib/jquery.js"></script>
-    <script type="text/javascript" src="js/lib/jComponent.js"></script>
-  </head>
-  <body>
-  <style>
-    .container {
-      width:500px;
-      height:auto;
-      margin:20px auto;
-      padding:30px;
-      border:1px solid #e5e5e5;
-      border-radius:5px;
-      font-family:"宋体";
-    }
-    h1 {
-      width:100%;
-      height:50px;
-      font:bold 18px/50px "microsoft yahei";
-    }
-    .item {
-      width:100%;
-      height:auto;
-      padding:10px 0;
-    }
-    .sex,
-    .sex1,
-    .checkbox,
-    .checkbox14,
-    .checkbox15,
-    .checkbox16{
-      width:auto;
-      height:20px;
+<head>
+<meta charset="utf-8">
+<title>radio checkbox select jQuery.component</title>
+<link rel="stylesheet"href="css/main.css">
+<link rel="stylesheet"href="css/CR.css">
+<script type="text/javascript"src="js/lib/jquery.js"></script>
+<script type="text/javascript"src="js/lib/CR.js"></script>
+</head>
+<body>
+<style>
+.container {
+  width: 500px;
+  height: auto;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  font-family: "宋体";
+}
+h1 {
+  width: 100%;
+  height: 50px;
+  font: bold 18px/50px "microsoft yahei";
+}
+.item {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+}
+.sex, .sex1, .checkbox, .checkbox14, .checkbox15, .itemCheckBox {
+  width: auto;
+  height: 20px;
+  margin-top:10px;
+}
+label {
+  margin-left: 5px;
+}
+.red {
+  color: #f60;
+}
+</style>
+<div class="container">
+<h1 class="red">采用Raido和CheckBox组件的方式在线问卷大调查</h1>
+<div class="item">
+<h1>1.请选择性别？</h1>
+<div class="sex">
+<input type="radio" name="name" checked value="1">
+<label>男</label>
+</div>
+<div class="sex">
+<input type="radio" name="name" value="1">
+<label>女</label>
+</div>
+</div>
+<div class="item">
+<h1>2.是否全选？</h1>
+<div class="allCheck ">
+<input type="checkbox" class="allCheck" name="checkbox" value="1">
+<label>全选</label>
+</div>
+<br/>
+<div class="itemCheckBox">
+<input type="checkbox" name="checkbox" value="1">
+<label>《Java》</label>
+</div>
+<div class="itemCheckBox">
+<input type="checkbox" name="checkbox" value="1">
+<label>《Java》</label>
+</div>
+<div class="itemCheckBox">
+<input type="checkbox" name="checkbox" value="1">
+<label>《Java》</label>
+</div>
+<div class="itemCheckBox">
+<input type="checkbox" name="checkbox" value="1">
+<label>《Java》</label>
+</div>
+<div class="itemCheckBox">
+<input type="checkbox" name="checkbox" value="1">
+<label>《Java》</label>
+</div>
+</div>
+</div>
 
+<script>
+$(function() {
+  $(".sex").radio( {
+    addClass: "radioBlue"
+  });
+ 
+  var itemCheckBox = $(".itemCheckBox").checkbox({
+    addClass: "checkboxBlue"
+  });
+
+  $(".allCheck").checkbox( {
+    addClass:"checkboxBlue", 
+    contact: itemCheckBox,
+    changed:function(that) {
+      if (that.prop("checked")) {
+        itemCheckBox.addChecked();
+      }
+      else {
+        itemCheckBox.removeChecked();
+      }
     }
-    label {margin-left:5px;}
-    .red{color:#f60;}
-  </style>
-  <div class="container">
-    <h1 class="red">采用Raido和CheckBox组件的方式在线问卷大调查</h1>
-    <div class="item">
-      <h1>1.请选择性别？</h1>
-      <div class="sex">
-        <input type="radio"  name="name" value="1" >
-        <label>男</label>
-      </div>
-      <div class="sex">
-        <input type="radio" name="name" value="1">
-        <label>女</label>
-      </div>
-    </div>
-    <div class="item">
-      <h1>2.你喜欢JavaScript这门动态弱类型语言吗？</h1>
-      <div class="sex1">
-        <input type="radio"  name="name1" value="1" >
-        <label>喜欢</label>
-      </div>
-      <div class="sex1">
-        <input type="radio" name="name1" value="1">
-        <label>不喜欢</label>
-      </div>
-    </div>
-    <div class="item">
-      <h1>3.我的优点有那些?</h1>
-      <div class="checkbox">
-        <input type="checkbox"  name="checkbox" value="1"  >
-        <label>好男人/好女人</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="checkbox" value="1" >
-        <label>富二代</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="checkbox" value="1" >
-        <label>星二代</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="checkbox" value="1" >
-        <label>学习好</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="checkbox" value="1" >
-        <label>长的漂亮</label>
-      </div>
-    </div>
-    <div class="item">
-      <h1>4.我计过的书箱有那些？</h1>
-      <div class="checkbox14">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《C++》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《JavaScript》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《C#》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《React》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《C++》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《JavaScript》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《C#》</label>
-      </div>
-      <div class="checkbox14">
-        <input type="checkbox" name="checkbox" value="1"  >
-        <label>《React》</label>
-      </div>
-    </div>
-    <div class="item">
-      <h1>5.是否全选？</h1>
-      <div class="checkbox15 ">
-        <input type="checkbox" class="allCheck"  name="checkbox" value="1" >
-        <label>全选</label>
-      </div>
-      <br/>
-      <div class="checkbox16">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox16">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox16">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox16">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-      <div class="checkbox16">
-        <input type="checkbox"  name="checkbox" value="1" >
-        <label>《Java》</label>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <h1>代码调用方式</h1>
-    <pre>
-    $(function(){
-        $(".sex").radioOrange();
-        $(".sex1").radioBlue();
-        $(".checkbox").checkboxOrange();
-        $(".checkbox14").checkboxBlue();
-      })
-    </pre>
-  </div>
-
-    <script>
-      $(function(){
-
-        $(".sex").radioOrange();
-        $(".sex1").radioBlue();
-        $(".checkbox").checkboxOrange();
-        $(".allCheck").checkboxBlue();
-
-        var checkbox14 = $(".checkbox14, .checkbox15").checkboxBlue();
-        var checkbox16 = $(".checkbox16").checkboxBlue();
-        $(".allCheck").change(function(){
-          if ( $(this).prop("checked") ) {
-            checkbox16.addChecked();
-          } else {
-            checkbox16.removeChecked();
-          }
-        });
-      });
-    </script>
-  </body>
+  });
+}
+);
+</script>
+</body>
 </html>

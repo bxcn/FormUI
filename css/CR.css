@@ -17,19 +17,23 @@
 }
 .jComponentContainer .jComponentIcon {
   float: left;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background-image: url("../images/jComponent/jComponent_icon.png");
 }
-.jComponentContainer .radioOrange:checked + .jComponentIcon {
-  background-position: -16px -16px;
+.jComponentContainer .radioBlue + .blur {
+  width:16px;
+  height:16px;
+  background-position: 0 0;
 }
-.jComponentContainer .radioBlue:checked + .jComponentIcon {
+.jComponentContainer .radioBlue + .active {
   background-position: -16px 0;
 }
-.jComponentContainer .checkboxOrange:checked + .jComponentIcon {
-  background-position: -18px -50px;
+.jComponentContainer .checkboxBlue + .blur {
+    width:18px;
+  height:18px;
+  background-position: 0 -32px;
 }
-.jComponentContainer .checkboxBlue:checked + .jComponentIcon {
+.jComponentContainer .checkboxBlue + .active {
   background-position: -18px -32px;
 }
