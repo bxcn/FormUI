@@ -88,9 +88,9 @@ JTheme.prototype = {
     var top = self.settings.top;
     var checkedCount = self.container.find(":checked").size();
 
-      // callback validate 选中前的回调返回 点击的元素， 当前选中的个数，总个数
+    // callback validate 选中前的回调返回 点击的元素， 当前选中的个数，总个数
     var validate = self.settings.validate(that, checkedCount, self.length);
-    
+
     // 选中 并且是validate验证通过
     if (validate && that.prop("checked")) {
       /**
@@ -101,13 +101,24 @@ JTheme.prototype = {
         $("input[name='" + that.attr("name") + "']").next("i").removeClass("active");
       }
       that.next().addClass("active");
+      // callback changed选中后回调返回点击的元素、当前选中的个数、总个数
+      self.settings.changed(that);
     } else {
-      that.prop("checked", false);
-      that.next().removeClass("active");
+      // 验证失败，返回样式
+      if (!validate) {
+        that.prop("checked", true);
+        that.next().addClass("active");
+      } else {
+        // 验证成功并且是取消checked时，取消样式
+        that.prop("checked", false);
+        that.next().removeClass("active");
+        // callback changed选中后回调返回点击的元素、当前选中的个数、总个数
+        self.settings.changed(that);
+      }
+
     }
 
-    // callback changed选中后回调返回点击的元素、当前选中的个数、总个数
-    self.settings.changed(that);
+
   },
   // 全部选中
   addChecked: function(array) {
