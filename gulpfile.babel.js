@@ -60,10 +60,11 @@ gulp.task('serve', ['sass', 'js', 'images', 'html', 'seajs'], () => {
         }
       }
     })
-    // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app//js/**/*.js', ['js']);
-  gulp.watch('app//sass/**/*.scss', ['sass']);
-  gulp.watch('app//images/**/*.{jpg,png,gif}', ['images']);
+  
+  // 每当修改以下文件夹下的文件时就会刷新浏览器;
+  gulp.watch('app/js/**/*.js', ['js']);
+  gulp.watch('app/sass/**/*.scss', ['sass']);
+  gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
   gulp.watch('app/**/*.html', ['html']);
 
   gulp.watch([
