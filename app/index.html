@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FormUI</title>
+</head>
+<body>
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/sea.js"></script>
+    <script>
+  seajs.config({
+    base: "/js",
+     map: [
+       [ /^(.*\.(?:css|js))(.*)$/i, '$1?v=version' ]
+    ]
+  });
+  var seaConfig = {
+    
+  };
+  seajs.use('app', function(app) {
+    app.init(seaConfig || {})
+  });
+  </script>
+</body>
+</html>
