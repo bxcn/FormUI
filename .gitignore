@@ -4,4 +4,4 @@ zip
 .tmp
 .sass-cache
 bower_components
-test/bower_components
+npm-debug.log
