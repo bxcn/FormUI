@@ -27,23 +27,11 @@ gulp.task('js', () => {
     .pipe(gulp.dest('dist/js/lib/'));
 });
 
-gulp.task("seajs", () => {
-  return gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
-    .pipe($.babel({
-      //"plugins": ["transform-es2015-modules-amd"]
-    }))
-    //.pipe($.seajs("app"))
-    .pipe(gulp.dest('dist/js/'));
-});
-
-
 gulp.task("requirejs", () => {
-   gulp.src('app/js/app.js')
+  return gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
    .pipe($.babel({
-     // "presets": ["es2015"],
-      "plugins": ["transform-es2015-modules-amd"]
-    }))
-    .pipe($.requirejsOptimize())
+    "presets": ["es2015"]
+   }))
     .pipe(gulp.dest( 'dist/js/' ) );
 });
 
@@ -60,7 +48,7 @@ gulp.task('sass', () => {
 // 重新加载
 const reload = browserSync.reload;
 
-gulp.task('serve', ['sass', 'js', 'images', 'html', 'seajs'], () => {
+gulp.task('serve', ['sass', 'js', 'images', 'html', 'requirejs'], () => {
   browserSync({
       port: 900, //端口
       host: 'localhost',
@@ -75,7 +63,7 @@ gulp.task('serve', ['sass', 'js', 'images', 'html', 'seajs'], () => {
     })
   
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app/js/**/*.js', ['js','seajs']);
+  gulp.watch('app/js/**/*.js', ['js','requirejs']);
   gulp.watch('app/sass/**/*.scss', ['sass']);
   gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
   gulp.watch('app/**/*.html', ['html']);

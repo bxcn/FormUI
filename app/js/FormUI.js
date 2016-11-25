@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
   
-
   module.exports.init = function() {
     // 一对多的关系
     var one = one || '[data-one]';

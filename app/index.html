@@ -137,12 +137,8 @@
     baseUrl: 'js/'
 
   });
-  window.requireConfig = {}
-  </script>
-  <script>
   require(['app'], function(app) {
-    console.log(app);
-    app.init(window.requireConfig);
+    app.init();
   });
   </script>
 </body>
