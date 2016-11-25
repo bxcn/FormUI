@@ -13,18 +13,18 @@ gulp.task('images', () => {
         cleanupIDs: false
       }]
     }))
-    .pipe(gulp.dest('dist/images/'));
+    .pipe(gulp.dest('images/'));
 });
 
 gulp.task('html', () => {
   gulp.src(['app/**/*.html'])
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest(''));
 
 });
 gulp.task('js', () => {
   return gulp.src(['app/js/lib/*.js'])
     .pipe($.cached("js"))
-    .pipe(gulp.dest('dist/js/lib/'));
+    .pipe(gulp.dest('js/lib/'));
 });
 
 gulp.task("requirejs", () => {
@@ -32,7 +32,7 @@ gulp.task("requirejs", () => {
    .pipe($.babel({
     "presets": ["es2015"]
    }))
-    .pipe(gulp.dest( 'dist/js/' ) );
+    .pipe(gulp.dest( 'js/' ) );
 });
 
 
@@ -42,7 +42,7 @@ gulp.task('sass', () => {
     .pipe($.autoprefixer({
       browsers: ['> 5%', 'last 4 versions']
     }))
-    .pipe(gulp.dest('dist/css/'));
+    .pipe(gulp.dest('css/'));
 });
 
 // 重新加载
@@ -54,7 +54,7 @@ gulp.task('serve', ['sass', 'js', 'images', 'html', 'requirejs'], () => {
       host: 'localhost',
       browser: ["chrome"], // 在chrome、firefix下打开该站点
       server: {
-        baseDir: ['dist/'],
+        baseDir: [''],
         index: 'index.html',
         routes: {
           '/bower_components': 'bower_components'
