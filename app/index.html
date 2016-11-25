@@ -6,8 +6,8 @@
 </head>
 <body>
   
-  <script src="js/jquery.js"></script>
-  <script src="js/sea.js"></script>
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/sea.js"></script>
     <script>
   seajs.config({
     base: "/js",
@@ -16,7 +16,7 @@
     ]
   });
   var seaConfig = {
-    
+      formUI:true
   };
   seajs.use('app', function(app) {
     app.init(seaConfig || {})

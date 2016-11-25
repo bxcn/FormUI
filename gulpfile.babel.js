@@ -1,6 +1,7 @@
 import gulp from 'gulp';
-import $ from 'gulp-load-plugins';
+import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
+const $ = gulpLoadPlugins();
 
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
@@ -21,21 +22,21 @@ gulp.task('html', () => {
 
 });
 gulp.task('js', () => {
-  return gulp.src(['app/js/**/*.js'])
+  return gulp.src(['app/js/lib/*.js'])
     .pipe($.cached("js"))
-    .pipe($.babel())
-    .pipe(gulp.dest('dist/js/'));
+    .pipe(gulp.dest('dist/js/lib/'));
 });
 
 gulp.task("seajs", () => {
-  return gulp.src(['app/js/app.js'])
-    .pipe($.seajs("app"))
-    .pipe($.babel())
+  return gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
+    .pipe($.babel({
+      "plugins": ["transform-es2015-modules-umd"]
+    }))
+    //.pipe($.seajs("app"))
     .pipe(gulp.dest('dist/js/'));
 });
 
 gulp.task('sass', () => {
-  const timer = +(new Date());
   return gulp.src(['app/sass/**/*.scss'])
     .pipe($.sass())
     .pipe($.autoprefixer({
@@ -49,7 +50,7 @@ const reload = browserSync.reload;
 
 gulp.task('serve', ['sass', 'js', 'images', 'html', 'seajs'], () => {
   browserSync({
-      port: 800, //端口
+      port: 900, //端口
       host: 'localhost',
       browser: ["chrome"], // 在chrome、firefix下打开该站点
       server: {
@@ -62,7 +63,7 @@ gulp.task('serve', ['sass', 'js', 'images', 'html', 'seajs'], () => {
     })
   
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app/js/**/*.js', ['js']);
+  gulp.watch('app/js/**/*.js', ['js','seajs']);
   gulp.watch('app/sass/**/*.scss', ['sass']);
   gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
   gulp.watch('app/**/*.html', ['html']);
