@@ -1,6 +1,7 @@
-import formUI from "formUI";
- 
-export var init = function() {
-  const formUI = require('formUI');
-    console.log(formUI.year);
-}
+define(function( require, exports, module ){
+  module.exports.init = function() {
+
+    require('formUI').init();
+    require('formUI').init();
+  }
+});

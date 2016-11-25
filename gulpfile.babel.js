@@ -30,11 +30,23 @@ gulp.task('js', () => {
 gulp.task("seajs", () => {
   return gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
     .pipe($.babel({
-      "plugins": ["transform-es2015-modules-umd"]
+      //"plugins": ["transform-es2015-modules-amd"]
     }))
     //.pipe($.seajs("app"))
     .pipe(gulp.dest('dist/js/'));
 });
+
+
+gulp.task("requirejs", () => {
+   gulp.src('app/js/app.js')
+   .pipe($.babel({
+     // "presets": ["es2015"],
+      "plugins": ["transform-es2015-modules-amd"]
+    }))
+    .pipe($.requirejsOptimize())
+    .pipe(gulp.dest( 'dist/js/' ) );
+});
+
 
 gulp.task('sass', () => {
   return gulp.src(['app/sass/**/*.scss'])

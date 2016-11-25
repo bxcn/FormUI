@@ -1,26 +1,150 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>FormUI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/formUI.css">
 </head>
+
 <body>
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: #f5f5f5;
+  }
   
+  .c_box_layer {
+    width: 600px;
+    height: auto;
+    margin: 60px auto 0;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+    padding:20px 0 30px;
+    text-align:center;
+  }
+  h2 {
+    font-size: 16px;
+    padding:5px 0;
+  }
+  .jcheckbox,
+  .jradio {
+    margin: 20px;
+  }
+  </style>
+  <div class="c_box_layer">
+  <h1>formUI插件演示效果</h1>
+    <div>
+      <h2>请选择招聘职位：</h2>
+      <div class="jcheckbox">
+        <input type="checkbox" data-one="item" value="1" /> 全选
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-many="item" value="1" /> JavaScript工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-many="item" value="1" /> PHP工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-many="item" value="1" /> Web前端工程师
+      </div>
+    </div>
+    <div>
+      <h2>请选择性别：</h2>
+      <div class="jradio active">
+        <input type="radio" name="radio" data-one="radio" checked value="1" /> 男
+      </div>
+      <div class="jradio">
+        <input type="radio" name="radio" data-one="radio" value="0" /> 女
+      </div>
+    </div>
+    <div>
+      <h2>是否全选：</h2>
+      <div class="jradio ">
+        <input type="radio" name="radio1" data-group="leaf1" data-one="isRadio0"   value="1" /> 选择1
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf1" value="1" /> JavaScript工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf1" value="1" /> PHP工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf1" value="1" /> Web前端工程师
+      </div>
+
+      <br>
+      <div class="jradio ">
+        <input type="radio" name="radio1" data-group="leaf2"  data-one="isRadio0" value="1" /> 选择2
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf2" value="1" /> JavaScript工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf2" value="1" /> PHP工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf2" value="1" /> Web前端工程师
+      </div>
+    </div>
+
+
+    <div>
+      <h2>是否全选：</h2>
+      <div class="jcheckbox ">
+        <input type="checkbox" name="radio" data-group="leaf3" data-one="isRadio3"   value="1" /> 选择1
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf3" value="1" /> JavaScript工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf3" value="1" /> PHP工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf3" value="1" /> Web前端工程师
+      </div>
+
+      <br>
+      <div class="jcheckbox ">
+        <input type="checkbox" name="radio" data-group="leaf4"  data-one="isRadio3" value="1" /> 选择2
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf4" value="1" /> JavaScript工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf4" value="1" /> PHP工程师
+      </div>
+      <div class="jcheckbox">
+        <input type="checkbox" data-leaf="leaf4" value="1" /> Web前端工程师
+      </div>
+    </div>
+
+
+  </div>
   <script src="js/lib/jquery.js"></script>
-  <script src="js/lib/sea.js"></script>
-    <script>
-  seajs.config({
-    base: "/js",
-     map: [
-       [ /^(.*\.(?:css|js))(.*)$/i, '$1?v=version' ]
-    ]
+  <script src="js/lib/require.js"></script>
+  <script>
+  require.config({
+    baseUrl: 'js/'
+
   });
-  var seaConfig = {
-      formUI:true
-  };
-  seajs.use('app', function(app) {
-    app.init(seaConfig || {})
+  window.requireConfig = {}
+  </script>
+  <script>
+  require(['app'], function(app) {
+    console.log(app);
+    app.init(window.requireConfig);
   });
   </script>
 </body>
+
 </html>
