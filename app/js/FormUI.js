@@ -17,6 +17,8 @@ define(function(require, exports, module) {
     require('formUI_oneToMany').init();
     // 组写叶节点的关系
     require('formUI_groupToLeaf').init();
+    // 兼容IE8 IE9
+    require('formUI_placeholder').init();
 
   
     /** 

@@ -110,7 +110,47 @@ define('formUI_groupToLeaf',['require','exports','module'],function (require, ex
 });
 
 
-define('formUI',['require','exports','module','formUI_oneToMany','formUI_groupToLeaf'],function (require, exports, module) {
+define('formUI_placeholder',['require','exports','module'],function (require, exports, module) {
+  module.exports.init = function () {
+    var supportPlaceholder = 'placeholder' in document.createElement('input'),
+        placeholder = function placeholder(input) {
+      var text = input.attr('placeholder'),
+          value = input.value;
+      if (!value) {
+
+        input.val(text).addClass("phcolor");
+      }
+      input.focus(function () {
+        if (input.val() == text) {
+          $(this).val("");
+        }
+      });
+      input.blur(function () {
+        if (input.val() == "") {
+          $(this).val(text).addClass("phcolor");
+        }
+      });
+      //输入的字符不为灰色
+      input.keydown(function () {
+        $(this).removeClass("phcolor");
+      });
+    };
+
+    //当浏览器不支持placeholder属性时，调用placeholder函数
+    if (!supportPlaceholder) {
+      $('input').each(function () {
+        var that = $(this);
+        text = that.attr("placeholder");
+        if (that.attr("type") == "text") {
+          placeholder(that);
+        }
+      });
+    }
+  };
+});
+
+
+define('formUI',['require','exports','module','formUI_oneToMany','formUI_groupToLeaf','formUI_placeholder'],function (require, exports, module) {
 
   module.exports.init = function () {
 
@@ -129,6 +169,8 @@ define('formUI',['require','exports','module','formUI_oneToMany','formUI_groupTo
     require('formUI_oneToMany').init();
     // 组写叶节点的关系
     require('formUI_groupToLeaf').init();
+    // 兼容IE8 IE9
+    require('formUI_placeholder').init();
 
     /** 
      验证动态加载皮肤, 默认建议用这种方式
