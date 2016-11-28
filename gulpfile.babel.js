@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
+import child_process from 'child_process';
 const $ = gulpLoadPlugins();
 
 gulp.task('images', () => {
@@ -28,13 +29,18 @@ gulp.task('js', () => {
 });
 
 gulp.task("requirejs", () => {
-  return gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
-   .pipe($.babel({
-    "presets": ["es2015"]
-   }))
-    .pipe(gulp.dest( 'js/' ) );
-});
+  gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
+    .pipe($.babel({
+      "presets": ["es2015"]
+    }))
+    .pipe(gulp.dest('js/'));
 
+  const exec = child_process.exec;
+  const free = exec('node r.js -o config.require.js');
+  free.stdout.on('data', function(data) {
+    console.log('标准输出：\n' + data);
+  });
+});
 
 gulp.task('sass', () => {
   return gulp.src(['app/sass/**/*.scss'])
@@ -50,20 +56,20 @@ const reload = browserSync.reload;
 
 gulp.task('serve', ['sass', 'js', 'images', 'html', 'requirejs'], () => {
   browserSync({
-      port: 900, //端口
-      host: 'localhost',
-      browser: ["chrome"], // 在chrome、firefix下打开该站点
-      server: {
-        baseDir: [''],
-        index: 'index.html',
-        routes: {
-          '/bower_components': 'bower_components'
-        }
+    port: 900, //端口
+    host: 'localhost',
+    browser: ["chrome"], // 在chrome、firefix下打开该站点
+    server: {
+      baseDir: [''],
+      index: 'index.html',
+      routes: {
+        '/bower_components': 'bower_components'
       }
-    })
-  
+    }
+  })
+
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app/js/**/*.js', ['js','requirejs']);
+  gulp.watch('app/js/**/*.js', ['js', 'requirejs']);
   gulp.watch('app/sass/**/*.scss', ['sass']);
   gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
   gulp.watch('app/**/*.html', ['html']);

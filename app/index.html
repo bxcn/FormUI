@@ -82,8 +82,8 @@
 
     <div>
       <h2>是否全选：</h2>
-        <input type="checkbox" name="radio" data-component="leaf3" data-one="isRadio3"  data-label="选择1"  value="1" /> 
-        <input type="checkbox" data-leaf="leaf3" value="1" data-label="JavaScript工程师" /> 
+        <input type="checkbox" checked name="radio" data-component="leaf3" data-one="isRadio3"  data-label="选择1"  value="1" /> 
+        <input type="checkbox" data-leaf="leaf3" value="1" checked data-label="JavaScript工程师" /> 
         <input type="checkbox" data-leaf="leaf3" value="1" data-label="JavaScript工程师" /> 
         <input type="checkbox" data-leaf="leaf3" value="1" data-label="JavaScript工程师" /> 
         <br>
@@ -95,12 +95,10 @@
 
 
   </div>
-  <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
   <script>
   require.config({
     baseUrl: 'js/'
-
   });
   require(['app'], function(app) {
     app.init();

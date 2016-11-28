@@ -40,18 +40,19 @@ define(function (require, exports, module) {
       var jcheckbox = 'jcheckbox',
           jradio = 'jradio',
           child = $(this),
-          isParent = child.parent('label').length;
+          isParent = child.parent('label.formUI').length;
 
       // 解决加载多次 require('formUI').init();
       if (isParent) {
         return false;
       }
-
+      var checked = child.prop('checked');
+      var active = checked ? 'active' : '';
       var label = child.data('label');
       var type = child.attr('type');
       var className = type == "checkbox" ? jcheckbox : jradio;
       child.wrap(function (i, input) {
-        return '<label class="' + className + '">' + label + '</label>';
+        return '<label class="formUI ' + className + ' ' + active + '">' + label + '</label>';
       });
     });
   };
