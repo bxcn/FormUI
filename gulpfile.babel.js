@@ -28,13 +28,15 @@ gulp.task('js', () => {
     .pipe(gulp.dest('js/lib/'));
 });
 
-gulp.task("requirejs", ["js"],() => {
+gulp.task("babel",() => {
   gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
     .pipe($.babel({
       "presets": ["es2015"]
     }))
     .pipe(gulp.dest('js/'));
+});
 
+gulp.task("requirejs", ["js","babel"],() => {
   // node r.js -o cssIn=main.css out=built/main.css optimizeCss=standard
   const exec = child_process.exec;
   const free = exec('node r.js -o config.require.js  optimize=none');
@@ -70,7 +72,7 @@ gulp.task('serve', ['sass', 'images', 'html', 'requirejs'], () => {
   })
 
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app/js/**/*.js', ['js', 'requirejs']);
+  gulp.watch('app/js/**/*.js', ['requirejs']);
   gulp.watch('app/sass/**/*.scss', ['sass']);
   gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
   gulp.watch('app/**/*.html', ['html']);

@@ -14,9 +14,9 @@ define(function(require, exports, module) {
     </div>
      */
     // 一对多的关系
-    require('oneToMany').init();
+    require('formUI_oneToMany').init();
     // 组写叶节点的关系
-    require('groupToLeaf').init();
+    require('formUI_groupToLeaf').init();
 
   
     /** 
@@ -42,7 +42,7 @@ define(function(require, exports, module) {
 
       child = $(this),
       
-      isParent = child.parent('label.formUI').length;
+      isParent = child.parent('div.formUI').length;
 
       // 解决加载多次 require('formUI').init();
       if ( isParent ) {
@@ -54,7 +54,7 @@ define(function(require, exports, module) {
       const type = child.attr('type');
       const className = type == "checkbox" ? jcheckbox : jradio;
       child.wrap(function(i, input) {
-        return '<label class="formUI ' + className + ' '+ active +'">' + label + '</label>';
+        return '<div class="formUI ' + className + ' '+ active +'">' + label + '</div>';
       });
     });
   };

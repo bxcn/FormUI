@@ -1,6 +1,6 @@
 
 
-define('oneToMany',['require','exports','module'],function (require, exports, module) {
+define('formUI_oneToMany',['require','exports','module'],function (require, exports, module) {
   module.exports.init = function () {
     // 一对多的关系
     var one = one || '[data-one]';
@@ -43,7 +43,7 @@ define('oneToMany',['require','exports','module'],function (require, exports, mo
 });
 
 
-define('groupToLeaf',['require','exports','module'],function (require, exports, module) {
+define('formUI_groupToLeaf',['require','exports','module'],function (require, exports, module) {
   module.exports.init = function () {
 
     // 组与节点的关系
@@ -110,7 +110,7 @@ define('groupToLeaf',['require','exports','module'],function (require, exports, 
 });
 
 
-define('formUI',['require','exports','module','oneToMany','groupToLeaf'],function (require, exports, module) {
+define('formUI',['require','exports','module','formUI_oneToMany','formUI_groupToLeaf'],function (require, exports, module) {
 
   module.exports.init = function () {
 
@@ -126,9 +126,9 @@ define('formUI',['require','exports','module','oneToMany','groupToLeaf'],functio
     </div>
      */
     // 一对多的关系
-    require('oneToMany').init();
+    require('formUI_oneToMany').init();
     // 组写叶节点的关系
-    require('groupToLeaf').init();
+    require('formUI_groupToLeaf').init();
 
     /** 
      验证动态加载皮肤, 默认建议用这种方式
@@ -150,7 +150,7 @@ define('formUI',['require','exports','module','oneToMany','groupToLeaf'],functio
       var jcheckbox = 'jcheckbox',
           jradio = 'jradio',
           child = $(this),
-          isParent = child.parent('label.formUI').length;
+          isParent = child.parent('div.formUI').length;
 
       // 解决加载多次 require('formUI').init();
       if (isParent) {
@@ -162,7 +162,7 @@ define('formUI',['require','exports','module','oneToMany','groupToLeaf'],functio
       var type = child.attr('type');
       var className = type == "checkbox" ? jcheckbox : jradio;
       child.wrap(function (i, input) {
-        return '<label class="formUI ' + className + ' ' + active + '">' + label + '</label>';
+        return '<div class="formUI ' + className + ' ' + active + '">' + label + '</div>';
       });
     });
   };
