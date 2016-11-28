@@ -28,15 +28,16 @@ gulp.task('js', () => {
     .pipe(gulp.dest('js/lib/'));
 });
 
-gulp.task("requirejs", () => {
+gulp.task("requirejs", ["js"],() => {
   gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
     .pipe($.babel({
       "presets": ["es2015"]
     }))
     .pipe(gulp.dest('js/'));
 
+  // node r.js -o cssIn=main.css out=built/main.css optimizeCss=standard
   const exec = child_process.exec;
-  const free = exec('node r.js -o config.require.js');
+  const free = exec('node r.js -o config.require.js  optimize=none');
   free.stdout.on('data', function(data) {
     console.log('标准输出：\n' + data);
   });
@@ -54,7 +55,7 @@ gulp.task('sass', () => {
 // 重新加载
 const reload = browserSync.reload;
 
-gulp.task('serve', ['sass', 'js', 'images', 'html', 'requirejs'], () => {
+gulp.task('serve', ['sass', 'images', 'html', 'requirejs'], () => {
   browserSync({
     port: 900, //端口
     host: 'localhost',
