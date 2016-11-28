@@ -26,7 +26,7 @@ input[data-leaf] {
     width: 18px;
     height: 18px;
     content: "";
-    background-image: url("../images/common/FormUI.png");
+    background-image: url("../images/FormUI.png");
     background-position: 0 -32px; }
   .jcheckbox.active:before {
     background-position: -18px -32px; }
@@ -44,7 +44,7 @@ input[data-leaf] {
     width: 20px;
     height: 20px;
     content: "";
-    background-image: url("../images/common/FormUI.png");
+    background-image: url("../images/FormUI.png");
     background-position: 0 -68px; }
   .jradio.active:before {
     background-position: -20px -68px; }
