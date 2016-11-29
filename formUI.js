@@ -207,7 +207,7 @@ $(document).on("mouseover.bs.select", '.formUI_select', function () {
 });
 
    window.formUI = formUI;
-   if (typeof define === 'function' && (define.amd)) { // AMD Module
+   if (typeof define === 'function' && define.amd) { // AMD Module
     define(function(require){
     	
     	return formUI;
