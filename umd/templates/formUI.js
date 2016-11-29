@@ -3,13 +3,16 @@
  if(typeof exports === 'object') {
     module.exports = factory();
   } else {
-    global.<%= namespace %> = factory();
+    factory(global);
   }
-}(typeof window !== "undefined" ? window : this, function() {
-  	<%= contents %>
-	  
+}(typeof window !== "undefined" ? window : this, function(window) {
+  	
+   <%= contents %>
+
+   window.<%= namespace %> = <%= exports %>;
    if (typeof define === 'function' && (define.amd)) { // AMD Module
     define(function(require){
+    	
     	return <%= exports %>;
     });
 
@@ -17,7 +20,9 @@
   	define(function(require, exports, module) {
   		return <%= exports %>;
   	});
+  } else {
+  	return <%= exports %>;
   }
 
-  return <%= exports %>;
+  
 }));

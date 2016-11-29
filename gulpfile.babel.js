@@ -18,7 +18,7 @@ gulp.task("formUI", () => {
         }];
       },
       exports: function(file) {
-        return '_exports';
+        return 'formUI';
       },
       namespace: function(file) {
         return 'formUI';

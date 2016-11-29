@@ -3,13 +3,13 @@
  if(typeof exports === 'object') {
     module.exports = factory();
   } else {
-    global.formUI = factory();
+    factory(global);
   }
-}(typeof window !== "undefined" ? window : this, function() {
-  	'use strict';
+}(typeof window !== "undefined" ? window : this, function(window) {
+  	
+   'use strict';
 
-var _exports = _exports || {};
-
+var formUI = formUI || {};
 /** 
    验证动态加载皮肤, 默认建议用这种方式
    jcheckbox jradio
@@ -205,17 +205,21 @@ $(document).on("mouseover.bs.select", '.formUI_select', function () {
   selectName.text(that.text());
   that.parent().hide();
 });
-	  
+
+   window.formUI = formUI;
    if (typeof define === 'function' && (define.amd)) { // AMD Module
     define(function(require){
-    	return _exports;
+    	
+    	return formUI;
     });
 
   } else if ( typeof define === 'function' && define.cmd) {  // CMD Module
   	define(function(require, exports, module) {
-  		return _exports;
+  		return formUI;
   	});
+  } else {
+  	return formUI;
   }
 
-  return _exports;
+  
 }));

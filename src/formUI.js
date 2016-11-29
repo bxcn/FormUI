@@ -1,5 +1,4 @@
-const exports = exports || {};
-
+const formUI = formUI || {};
 /** 
    验证动态加载皮肤, 默认建议用这种方式
    jcheckbox jradio
