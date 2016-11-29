@@ -92,16 +92,35 @@
         <input type="checkbox" data-leaf="leaf4" value="1" data-label="JavaScript工程师" /> 
         <input type="checkbox" data-leaf="leaf4" value="1" data-label="JavaScript工程师" /> 
     </div>
-
+  
+    <div>
+    <select data-select="one" data-concat="select" name="">
+          <option value="请选择">请选择</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+        </select>
+      
+    <select data-select="two" data-concat="three" name="">
+          <option value="请选择">请选择</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+        </select>      
+    <select data-select="three" name="">
+          <option value="请选择">请选择</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+        </select>
+    </div>
 
   </div>
+  <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
+<!--   <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script> -->
   <script>
   require.config({
-    baseUrl: 'js/'
+    baseUrl: ''
   });
-  require(['app'], function(app) {
-    app.init();
+  require(['formUI'], function(formUI) {
   });
   </script>
 </body>

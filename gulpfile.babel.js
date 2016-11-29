@@ -1,52 +1,35 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
-import child_process from 'child_process';
+import path from 'path';
 const $ = gulpLoadPlugins();
 
-gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
-    .pipe($.cached("images"))
-    .pipe($.imagemin({
-      progressive: true,
-      interlaced: true,
-      svgoPlugins: [{
-        cleanupIDs: false
-      }]
-    }))
-    .pipe(gulp.dest('images/'));
-});
-
-gulp.task('html', () => {
-  gulp.src(['app/**/*.html'])
-    .pipe(gulp.dest(''));
-
-});
-gulp.task('js', () => {
-  return gulp.src(['app/js/lib/*.js'])
-    .pipe($.cached("js"))
-    .pipe(gulp.dest('js/lib/'));
-});
-
-gulp.task("babel",() => {
-  gulp.src(['app/js/**/**.js', '!app/js/lib/*.js'])
+gulp.task("formUI", () => {
+  gulp.src(['src/**/*.js'])
     .pipe($.babel({
       "presets": ["es2015"]
     }))
-    .pipe(gulp.dest('js/'));
-});
-
-gulp.task("requirejs", ["js","babel"],() => {
-  // node r.js -o cssIn=main.css out=built/main.css optimizeCss=standard
-  const exec = child_process.exec;
-  const free = exec('node r.js -o config.require.js  optimize=none');
-  free.stdout.on('data', function(data) {
-    console.log('标准输出：\n' + data);
-  });
+    .pipe($.concat('formUI.js'))
+    .pipe($.umd({
+      dependencies: function(file) {
+        return [{
+          name:"",
+          amd:""
+        }];
+      },
+      exports: function(file) {
+        return '_exports';
+      },
+      namespace: function(file) {
+        return '';
+      },
+      template: path.join(__dirname, 'umd/templates/formUI.js')
+    }))
+    .pipe(gulp.dest(''));
 });
 
 gulp.task('sass', () => {
-  return gulp.src(['app/sass/**/*.scss'])
+  return gulp.src(['src/sass/**/*.scss'])
     .pipe($.sass())
     .pipe($.autoprefixer({
       browsers: ['> 5%', 'last 4 versions']
@@ -57,7 +40,7 @@ gulp.task('sass', () => {
 // 重新加载
 const reload = browserSync.reload;
 
-gulp.task('serve', ['sass', 'images', 'html', 'requirejs'], () => {
+gulp.task('serve', ['sass', 'formUI'], () => {
   browserSync({
     port: 900, //端口
     host: 'localhost',
@@ -72,10 +55,8 @@ gulp.task('serve', ['sass', 'images', 'html', 'requirejs'], () => {
   })
 
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('app/js/**/*.js', ['requirejs']);
-  gulp.watch('app/sass/**/*.scss', ['sass']);
-  gulp.watch('app/images/**/*.{jpg,png,gif}', ['images']);
-  gulp.watch('app/**/*.html', ['html']);
+  gulp.watch('src/**/*.js', ['formUI']);
+  gulp.watch('sass/**/*.scss', ['sass']);
 
   gulp.watch([
     'app/**/*.*'
