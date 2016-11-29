@@ -56,7 +56,7 @@ gulp.task('serve', ['sass', 'formUI'], () => {
 
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
   gulp.watch('src/**/*.js', ['formUI']);
-  gulp.watch('sass/**/*.scss', ['sass']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
 
   gulp.watch([
     'app/**/*.*'

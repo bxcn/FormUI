@@ -1,41 +1,108 @@
 @charset "UTF-8";
-/*@font-face { font-family: 'iconfont'; src: url('http://localhost:9000/font/font.ttf') format('truetype'); }*/
 html {
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent; }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, legend, button, input, textarea, form, th, td {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+legend,
+button,
+input,
+textarea,
+form,
+th,
+td {
   margin: 0;
   padding: 0;
   vertical-align: baseline; }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
   display: block; }
 
-audio, canvas, video {
+audio,
+canvas,
+video {
   display: inline-block;
   *display: inline;
   *zoom: 1; }
 
-body, button, input, select, textarea {
+body,
+button,
+input,
+select,
+textarea {
   outline: none; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 100%;
   font-weight: normal; }
 
-address, cite, dfn, em, var, i {
+address,
+cite,
+dfn,
+em,
+var,
+i {
   font-style: normal; }
 
-body, code, kbd, pre, samp, tt {
+body,
+code,
+kbd,
+pre,
+samp,
+tt {
   font-family: Arial, "微软雅黑", sans-serif; }
 
 small {
   font-size: 80%; }
 
-ul, ol {
+ul,
+ol {
   list-style: none outside none; }
 
 a {
@@ -52,11 +119,13 @@ a:active {
 a:focus {
   outline: 0; }
 
-abbr[title], acronym[title] {
+abbr[title],
+acronym[title] {
   border-bottom: 1px dotted;
   cursor: help; }
 
-q:before, q:after {
+q:before,
+q:after {
   content: ''; }
 
 mark {
@@ -68,7 +137,8 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word; }
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -85,7 +155,8 @@ legend {
   padding: 0;
   white-space: normal; }
 
-fieldset, iframe {
+fieldset,
+iframe {
   border: 0 none; }
 
 img {
@@ -93,27 +164,38 @@ img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic; }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: 100%;
   vertical-align: baseline; }
 
-button, input[type="button"], input[type="reset"], input[type="submit"] {
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   /* 改正iOS设备中“input”类型表单样式不可用的问题 */
   cursor: pointer;
   /* 增强光标样式在input表单和其他表单的可用性和一致性 */ }
 
-button[disabled], html input[disabled] {
+button[disabled],
+html input[disabled] {
   cursor: default;
   /* 为禁用表单重设定默认光标样式 */ }
 
-button::-moz-focus-inner, button::-moz-focus-outer, input::-moz-focus-inner, input::-moz-focus-outer {
+button::-moz-focus-inner,
+button::-moz-focus-outer,
+input::-moz-focus-inner,
+input::-moz-focus-outer {
   border: 0 none;
   padding: 0;
   margin: 0; }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   box-sizing: border-box;
   /* 调整IE 8/9中尺寸属性设置为“内容框”的盒子模型 */
   padding: 0;
@@ -125,11 +207,14 @@ input[type="search"] {
   /* 兼容Safari 5 and Chrome上 “border-box” 上设置 “box-sizing”属性 */
   box-sizing: content-box; }
 
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
   /* 去除OS X系统上Safari 5和Chrome中容器内边距和搜索取消按钮属性 */ }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px white inset; }
 
 textarea {
@@ -154,7 +239,8 @@ img {
   height: 0;
   overflow: hidden; }
 
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   content: "";
   display: block;
   height: 0;
@@ -190,7 +276,8 @@ body {
   font-size: 14px;
   color: #4d4d4d; }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none; }
 
 .mt5 {
@@ -679,42 +766,6 @@ a, a:hover {
 .f30 {
   font-size: 30px; }
 
-.red {
-  color: #da004e; }
-
-.gray {
-  color: #4d4d4d; }
-
-.yellow {
-  color: #b3d465; }
-
-.orange {
-  color: #f60; }
-
-.cf60 {
-  color: #f60; }
-
-.cb2b {
-  color: #b2b2b2; }
-
-.cbfb {
-  color: #bfbfbf; }
-
-.blue {
-  color: #38f; }
-
-.cfff {
-  color: #fff; }
-
-.c000 {
-  color: #424242; }
-
-.c999 {
-  color: #999; }
-
-.c4d4 {
-  color: #4d4d4d; }
-
 .clearfix {
   overflow: hidden; }
 
@@ -723,28 +774,3 @@ a, a:hover {
   width: 100%;
   height: auto;
   content: ""; }
-
-.sex {
-  width: 60px;
-  height: 16px; }
-
-.checkbox {
-  width: 60px;
-  height: 16px; }
-
-.label {
-  width: auto;
-  height: 16px;
-  font-size: 14px;
-  margin-left: 10px; }
-
-.checkbox14 {
-  width: 80px;
-  height: 20px; }
-
-.checkbox14 .label {
-  width: auto;
-  height: 20px;
-  font-size: 14px;
-  line-height: 20px;
-  margin-left: 10px; }

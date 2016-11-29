@@ -114,14 +114,20 @@
 
   </div>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
-<!--   <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script> -->
+  <!-- <script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script> -->
+<script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
   <script>
-  require.config({
+/*  require.config({
     baseUrl: ''
   });
   require(['formUI'], function(formUI) {
+  });*/
+  seajs.config({
+    base: "",
   });
+
+
+seajs.use("formUI")
   </script>
 </body>
 
