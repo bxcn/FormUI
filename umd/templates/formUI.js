@@ -10,7 +10,7 @@
    <%= contents %>
 
    window.<%= namespace %> = <%= exports %>;
-   if (typeof define === 'function' && (define.amd)) { // AMD Module
+   if (typeof define === 'function' && define.amd) { // AMD Module
     define(function(require){
     	
     	return <%= exports %>;
