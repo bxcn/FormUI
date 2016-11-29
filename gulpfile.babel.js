@@ -21,7 +21,7 @@ gulp.task("formUI", () => {
         return '_exports';
       },
       namespace: function(file) {
-        return '';
+        return 'formUI';
       },
       template: path.join(__dirname, 'umd/templates/formUI.js')
     }))

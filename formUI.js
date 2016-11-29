@@ -1,14 +1,12 @@
 ;
 (function(global, factory) {
-  if (typeof define === 'function' && (define.amd || define.cmd)) {
-    define(factory);
-  } else if (typeof exports === 'object') {
+ if(typeof exports === 'object') {
     module.exports = factory();
   } else {
-    global = factory();
+    global.formUI = factory();
   }
-}(typeof window !== "undefined" ? window : this, function(require) {
-  'use strict';
+}(typeof window !== "undefined" ? window : this, function() {
+  	'use strict';
 
 var _exports = _exports || {};
 
@@ -207,5 +205,17 @@ $(document).on("mouseover.bs.select", '.formUI_select', function () {
   selectName.text(that.text());
   that.parent().hide();
 });
+	  
+   if (typeof define === 'function' && (define.amd)) { // AMD Module
+    define(function(require){
+    	return _exports;
+    });
+
+  } else if ( typeof define === 'function' && define.cmd) {  // CMD Module
+  	define(function(require, exports, module) {
+  		return _exports;
+  	});
+  }
+
   return _exports;
 }));
