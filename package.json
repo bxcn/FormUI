@@ -21,7 +21,9 @@
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-load-plugins": "^1.4.0",
+    "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
     "gulp-umd": "^0.2.0"
   },
   "scripts": {

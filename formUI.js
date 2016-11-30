@@ -1,13 +1,14 @@
 ;
 (function(global, factory) {
- if(typeof exports === 'object') {
+  'use strict';
+  if (typeof exports === 'object') {
     module.exports = factory();
   } else {
     factory(global);
   }
 }(typeof window !== "undefined" ? window : this, function(window) {
-  	
-   'use strict';
+
+  ;
 
 var formUI = formUI || {};
 /** 
@@ -45,7 +46,7 @@ $(document).find("[data-one][data-label],[data-many][data-label],[data-leaf][dat
     return '<div class="formUI ' + className + ' ' + active + '">' + label + '</div>';
   });
 });
-'use strict';
+;
 
 // 组与节点的关系
 var component = '[data-component]';
@@ -107,7 +108,7 @@ $(document).on("change.bs.componenttoLeaf", component, function (ev) {
   var checked = !!$('[data-leaf="' + component + '"]').filter(":checked").size();
   $('[data-component="' + component + '"]').prop("checked", checked).parent().toggleClass('active', checked);
 });
-'use strict';
+;
 
 // 一对多的关系
 var one = '[data-one]';
@@ -147,7 +148,7 @@ $(document).on("change.bs.oneToMany", one, function (ev) {
     $('[data-one="' + contact + '"]').prop("checked", checked).parent().toggleClass('active', checked);
   }
 });
-'use strict';
+;
 
 var supportPlaceholder = 'placeholder' in document.createElement('input'),
     placeholder = function placeholder(input) {
@@ -206,20 +207,14 @@ $(document).on("mouseover.bs.select", '.formUI_select', function () {
   that.parent().hide();
 });
 
-   window.formUI = formUI;
-   if (typeof define === 'function' && define.amd) { // AMD Module
-    define(function(require){
-    	
-    	return formUI;
+  window.formUI = formUI;
+  if (typeof define === 'function' && (define.amd || define.cmd)) { // AMD Module
+    define(function(require) {
+      return formUI;
     });
 
-  } else if ( typeof define === 'function' && define.cmd) {  // CMD Module
-  	define(function(require, exports, module) {
-  		return formUI;
-  	});
-  } else {
-  	return formUI;
   }
 
-  
+  return formUI;
+
 }));

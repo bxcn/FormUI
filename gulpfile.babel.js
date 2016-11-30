@@ -9,6 +9,7 @@ gulp.task("formUI", () => {
     .pipe($.babel({
       "presets": ["es2015"]
     }))
+    .pipe($.replace("'use strict'",''))
     .pipe($.concat('formUI.js'))
     .pipe($.umd({
       dependencies: function(file) {
@@ -25,6 +26,8 @@ gulp.task("formUI", () => {
       },
       template: path.join(__dirname, 'umd/templates/formUI.js')
     }))
+    .pipe($.uglify())
+    .pipe($.concat('formUI.min.js'))
     .pipe(gulp.dest(''));
 });
 
