@@ -1,6 +1,6 @@
  $('[data-select]').each(function() {
    var html = $(this).html().replace(/(option)/gi, "li");
-   console.log(html);
+   //console.log(html);
    $(this).wrap(function() {
      return `
         <div class="formUI_select">
