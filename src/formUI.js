@@ -16,7 +16,7 @@ const formUI = formUI || {};
   </div>
  */
 $(document).find("[data-one][data-label],[data-many][data-label],[data-leaf][data-label]").each(function() {
-  const jcheckbox = 'jcheckbox',
+     const jcheckbox = 'jcheckbox',
 
     jradio = 'jradio',
 

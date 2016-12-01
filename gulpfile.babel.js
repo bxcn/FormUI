@@ -4,11 +4,19 @@ import browserSync from 'browser-sync';
 import path from 'path';
 const $ = gulpLoadPlugins();
 
+gulp.task('default', () => {
+  return gulp.src('src/test.js')
+  .pipe($.jscs())
+  .pipe($.jscs.reporter());
+});
+
 gulp.task("formUI", () => {
   gulp.src(['src/**/*.js'])
     .pipe($.babel({
       "presets": ["es2015"]
     }))
+
+    .pipe($.jscs())
     .pipe($.replace("'use strict'",''))
     .pipe($.concat('formUI.js'))
     .pipe($.umd({
