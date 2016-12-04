@@ -10,9 +10,8 @@ JS：
 <script src="js/formUI.js"></script>
 ```
 图片效果：
-```
+
 ![image](https://github.com/bxcn/formUI/raw/master/raw/all.png)
-```
 
 单个使用方式(有wrap的):
 ```
