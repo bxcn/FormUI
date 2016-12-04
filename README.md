@@ -9,6 +9,10 @@ JS：
 ```
 <script src="js/formUI.js"></script>
 ```
+图片效果：
+```
+![image](https://github.com/bxcn/formUI/raw/master/raw/all.png)
+```
 
 单个使用方式(有wrap的):
 ```
@@ -86,6 +90,6 @@ require space before block statements 块语句之前需要空格
 
 requireSpacesInsideParentheses:圆括号中加空格
 requireSpaceAfterComma:逗号后验证空格
-requireCapitalizedComments
+requireCapitalizedComments:
 
 

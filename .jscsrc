@@ -1,7 +1,7 @@
 {
   "preset": "jquery",
   "excludeFiles": ["node_modules/**"],
-  "validateIndentation": 2,
+  "validateIndentation": ,
   "validateQuoteMarks": "'",
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true,
@@ -12,5 +12,6 @@
   "disallowQuotedKeysInObjects": true,
   "disallowMultipleLineStrings": true,
   "disallowMultipleSpaces": true,
-  "validateLineBreaks": "CRLF"
+  "validateLineBreaks": "CRLF",
+  "requireSpacesInsideParentheses":false
 }
