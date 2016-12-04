@@ -13,6 +13,8 @@ JS：
 
 ![image](https://github.com/bxcn/formUI/raw/master/raw/all.png)
 
+![image](https://github.com/bxcn/formUI/blob/master/raw/all.png)
+
 单个使用方式(有wrap的):
 ```
 <div class="jcheckbox">
