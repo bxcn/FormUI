@@ -11,7 +11,9 @@ JS：
 ```
 图片效果：
 
-![image](https://github.com/bxcn/formUI/raw/master/raw/all.png)
+```
+添加图片代码：![image](https://github.com/bxcn/formUI/blob/master/raw/all.png)
+```
 
 ![image](https://github.com/bxcn/formUI/blob/master/raw/all.png)
 
