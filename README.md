@@ -1,12 +1,13 @@
 #一个专门针对input中checkbox、radio类型的皮肤组件，功能包括单选、多选、全选和不全选功能
 
 调用方式：
+
 CSS:
-``` link
+```html
 <link rel="stylesheet" href="css/formUI.css">
 ```
 JS：
-``` script
+```html
 <script src="js/formUI.js"></script>
 ```
 
