@@ -15,25 +15,21 @@ const formUI = formUI || {};
     <input type="checkbox" data-leaf="leaf2" value="1"  data-label="Web前端工程师"/>
   </div>
  */
-$(document).find("[data-one][data-label],[data-many][data-label],[data-leaf][data-label]").each(function() {
-     const jcheckbox = 'jcheckbox',
-
+$( document ).find( "[data-one][data-label],[data-many][data-label],[data-leaf][data-label]" ).each( function() {
+  const jcheckbox = 'jcheckbox',
     jradio = 'jradio',
-
-    child = $(this),
-
-    isParent = child.parent('div.formUI').length;
-
+    child = $( this ),
+    isParent = child.parent( 'div.formUI' ).length;
   // 解决加载多次 require('formUI').init();
-  if (isParent) {
+  if ( isParent ) {
     return false;
   }
-  const checked = child.prop('checked');
+  const checked = child.prop( 'checked' );
   const active = checked ? 'active' : '';
-  const label = child.data('label');
-  const type = child.attr('type');
+  const label = child.data( 'label' );
+  const type = child.attr( 'type' );
   const className = type == "checkbox" ? jcheckbox : jradio;
-  child.wrap(function(i, input) {
+  child.wrap( function( i, input ) {
     return '<div class="formUI ' + className + ' ' + active + '">' + label + '</div>';
-  });
-});
+  } );
+} );

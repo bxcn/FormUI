@@ -2,27 +2,27 @@
 
 调用方式：
 CSS:
-```
+``` link
 <link rel="stylesheet" href="css/formUI.css">
 ```
 JS：
-```
+``` script
 <script src="js/formUI.js"></script>
 ```
 
 单个使用方式(有wrap的):
-```
+``` html
 <div class="jcheckbox">
   <input type="checkbox" data-one="item" value="1" />我会javascript
 </div>
 ```
 单个使用方式(无皮肤):
-```
+``` html
 <input type="checkbox" data-one value="1" checked data-label="JavaScript工程师" /> 
 ```
 
 关联使用方式(有wrap的):
-```
+```html
 <div>
   <h2>请选择招聘职位：</h2>
   <div class="jcheckbox">
