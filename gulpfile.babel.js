@@ -17,6 +17,7 @@ gulp.task("formUI", () => {
     }))
 
     .pipe($.jscs())
+   .pipe($.jscs.reporter())
     .pipe($.replace("'use strict'",''))
     .pipe($.concat('formUI.js'))
     .pipe($.umd({

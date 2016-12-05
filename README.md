@@ -10,6 +10,9 @@ JS：
 ```html
 <script src="js/formUI.js"></script>
 ```
+图片效果：
+
+![image](https://github.com/bxcn/formUI/blob/master/raw/all.png)
 
 单个使用方式(有wrap的):
 ``` html
@@ -19,7 +22,7 @@ JS：
 ```
 单个使用方式(无皮肤):
 ``` html
-<input type="checkbox" data-one value="1" checked data-label="JavaScript工程师" /> 
+<input type="checkbox" data-one value="1" checked data-label="JavaScript工程师" />
 ```
 
 关联使用方式(有wrap的):
@@ -48,9 +51,9 @@ JS：
   <div class="jcheckbox">
     <input type="checkbox" data-one="job" value="1" /> 全选
   </div>
-  <input type="checkbox" data-many="job" value="1" checked data-label="JavaScript工程师1" /> 
-  <input type="checkbox" data-many="job" value="2" checked data-label="JavaScript工程师2" /> 
-  <input type="checkbox" data-many="job" value="3" checked data-label="JavaScript工程师3" /> 
+  <input type="checkbox" data-many="job" value="1" checked data-label="JavaScript工程师1" />
+  <input type="checkbox" data-many="job" value="2" checked data-label="JavaScript工程师2" />
+  <input type="checkbox" data-many="job" value="3" checked data-label="JavaScript工程师3" />
 </div>
 ```
 
@@ -71,8 +74,8 @@ JS：
 ```
 <div>
   <h2>请选择性别：</h2>
-  <input type="radio" name="radio" data-one="radio"  value="1" data-label="男" /> 
-  <input type="radio" name="radio" data-one="radio" value="0" data-label="女" /> 
+  <input type="radio" name="radio" data-one="radio"  value="1" data-label="男" />
+  <input type="radio" name="radio" data-one="radio" value="0" data-label="女" />
 </div>
 ```
 
@@ -87,6 +90,6 @@ require space before block statements 块语句之前需要空格
 
 requireSpacesInsideParentheses:圆括号中加空格
 requireSpaceAfterComma:逗号后验证空格
-requireCapitalizedComments
+requireCapitalizedComments:
 
 
