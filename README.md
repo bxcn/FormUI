@@ -3,11 +3,11 @@
 调用方式：
 
 CSS:
-```html
+``` html
 <link rel="stylesheet" href="css/formUI.css">
 ```
 JS：
-```html
+``` html
 <script src="js/formUI.js"></script>
 ```
 图片效果：
@@ -26,7 +26,7 @@ JS：
 ```
 
 关联使用方式(有wrap的):
-```html
+``` html
 <div>
   <h2>请选择招聘职位：</h2>
   <div class="jcheckbox">
@@ -45,7 +45,7 @@ JS：
 ```
 
 关联使用方式(无皮肤):
-```
+``` html
 <div>
   <h2>请选择招聘职位：</h2>
   <div class="jcheckbox">
@@ -58,7 +58,7 @@ JS：
 ```
 
 单选使用方式(有皮肤):
-```
+``` html
 <div>
   <h2>请选择性别：</h2>
   <div class="jradio ">
@@ -71,7 +71,7 @@ JS：
 ```
 
 单选使用方式(有皮肤):
-```
+``` html
 <div>
   <h2>请选择性别：</h2>
   <input type="radio" name="radio" data-one="radio"  value="1" data-label="男" />
