@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>FormUI</title>
+  <title>FormUI CMD</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/formUI.css">
 </head>
@@ -113,7 +113,13 @@
     </div>
   </div>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="formUI.js"></script>
+  <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
+  <script>
+  seajs.config({
+    base: "",
+  });
+  seajs.use("formUI");
+  </script>
 </body>
 
 </html>

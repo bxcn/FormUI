@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>FormUI</title>
+  <title>FormUI AMD</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/formUI.css">
 </head>
@@ -113,7 +113,13 @@
     </div>
   </div>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="formUI.js"></script>
+  <script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
+  <script>
+  require.config({
+    baseUrl: ''
+  });
+  require(['formUI'], function(formUI) {});
+  </script>
 </body>
 
 </html>

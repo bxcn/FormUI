@@ -1,12 +1,19 @@
 ;
-(function(global, factory) {
+( function ( global, factory ) {
   'use strict';
-  if (typeof exports === 'object') {
+  if ( typeof define === 'function' && (define.amd || define.cmd) ) {
+    // AMD\CMD. Register as an anonymous module.
+    define( function ( require, exports, module ) {
+      return factory( global );
+    } );
+
+  } else if ( typeof exports === 'object' ) {
     module.exports = factory();
   } else {
-    factory(global);
+    global.
+    formUI = factory( global );
   }
-}(typeof window !== "undefined" ? window : this, function(window) {
+}( typeof window !== "undefined" ? window : this, function ( window ) {
 
   ;
 
@@ -32,7 +39,6 @@ $(document).find("[data-one][data-label],[data-many][data-label],[data-leaf][dat
       jradio = 'jradio',
       child = $(this),
       isParent = child.parent('div.formUI').length;
-
   // 解决加载多次 require('formUI').init();
   if (isParent) {
     return false;
@@ -188,7 +194,7 @@ if (!supportPlaceholder) {
 
 $('[data-select]').each(function () {
   var html = $(this).html().replace(/(option)/gi, "li");
-  console.log(html);
+  //console.log(html);
   $(this).wrap(function () {
     return "\n        <div class=\"formUI_select\">\n          <div class=\"formUI_slected_name\">\u8BF7\u9009\u62E9</div>\n          <ul class=\"formUI_select_list\">" + html + " </ul>\n        </div>\n      ";
   });
@@ -206,15 +212,8 @@ $(document).on("mouseover.bs.select", '.formUI_select', function () {
   selectName.text(that.text());
   that.parent().hide();
 });
-
-  window.formUI = formUI;
-  if (typeof define === 'function' && (define.amd || define.cmd)) { // AMD Module
-    define(function(require) {
-      return formUI;
-    });
-
-  }
+"use strict";
 
   return formUI;
 
-}));
+} ) );

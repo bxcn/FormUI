@@ -1,11 +1,8 @@
 {
   "preset": "jquery",
   "excludeFiles": ["node_modules/**"],
-<<<<<<< HEAD
   "validateIndentation": 4,
-=======
   "validateIndentation": ,
->>>>>>> 9994b6838a954620ecb748f5a474008b3bf11876
   "validateQuoteMarks": "'",
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true,
